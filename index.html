@@ -1,0 +1,856 @@
+<!DOCTYPE html><html class="dark scroll-smooth" lang="pt-BR" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport">
+<title>LR TECH FIX | Reparo Avançado de Smartphones &amp; Eletrônicos</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          screens: {
+            'xs': '380px',
+          },
+          colors: {
+            "surface-container-lowest": "#08080a",
+            "on-secondary-container": "#00616d",
+            "on-surface-variant": "#d0c5af",
+            "surface-container-high": "#232327",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#313032",
+            "on-background": "#e5e1e4",
+            "secondary": "#00E3FD",
+            "primary": "#F2CA50",
+            "secondary-fixed-dim": "#00daf3",
+            "surface-container-low": "#141417",
+            "tertiary": "#c4cee2",
+            "secondary-container": "#004f58",
+            "primary-container": "#D4AF37",
+            "on-secondary": "#00363d",
+            "primary-fixed": "#ffe088",
+            "surface-bright": "#333338",
+            "surface-tint": "#e9c349",
+            "outline": "#99907c",
+            "outline-variant": "#3f3b30",
+            "surface-container-highest": "#2e2e34",
+            "surface": "#0f0f12",
+            "background": "#0a0a0d",
+            "surface-container": "#1a1a1e",
+            "on-surface": "#e5e1e4",
+            "on-primary": "#241a00"
+          },
+          fontFamily: {
+            "body-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "title-md": ["Space Grotesk", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0d;
+        color: #e5e1e4;
+        overflow-x: hidden;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    
+    /* Scrollbar oculta elegante para nav horizontal */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0e0e12;
+    }
+    
+    /* Efeitos Futuristas de Glow Cyber */
+    .cyber-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    @media (hover: hover) {
+      .cyber-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(212, 175, 55, 0.55);
+        box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25), 0 0 15px rgba(0, 227, 253, 0.15);
+      }
+      .cyber-card-cyan:hover {
+        border-color: rgba(0, 227, 253, 0.6);
+        box-shadow: 0 10px 30px -10px rgba(0, 227, 253, 0.3);
+      }
+    }
+
+    /* Shimmer Metálico Dourado */
+    .shimmer-gold {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-gold::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(25deg);
+      animation: metallicShimmer 4.5s infinite;
+      pointer-events: none;
+    }
+    @keyframes metallicShimmer {
+      0% { left: -70%; }
+      30%, 100% { left: 140%; }
+    }
+
+    .neon-border-gold {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.22), inset 0 0 12px rgba(212, 175, 55, 0.08);
+    }
+    .neon-border-cyan {
+      box-shadow: 0 0 20px rgba(0, 227, 253, 0.2), inset 0 0 10px rgba(0, 227, 253, 0.08);
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cyber-bg-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    /* Prevenir zoom no iOS Safari ao focar inputs */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
+  </style>
+</head>
+<body class="font-body-md bg-[#0a0a0d] text-on-surface antialiased selection:bg-primary selection:text-black cyber-bg-grid relative min-h-screen overflow-x-hidden">
+<!-- TOP HEADER FIXO RESPONSIVO -->
+<header class="fixed top-0 inset-x-0 z-50 pt-safe bg-[#08080a]/95 backdrop-blur-xl border-b border-[#D4AF37]/25 shadow-[0_4px_30px_rgba(0,0,0,0.85)]">
+<div class="h-16 px-3 sm:px-6 max-w-6xl mx-auto flex items-center justify-between gap-2">
+<!-- Logo Oficial e Identificação Flexível -->
+<a class="flex items-center gap-2 sm:gap-3 min-w-0 group flex-shrink" href="#inicio">
+<div class="h-10 w-11 sm:w-12 flex-shrink-0 flex items-center justify-center p-1 rounded-lg bg-surface-container-low border border-[#D4AF37]/40 shadow-inner group-hover:border-[#D4AF37] transition-colors">
+<img alt="LR TECH FIX Assistência Técnica" class="h-full w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw4RhmV9JYUFzTyBcA5gK7hKUOuqI833TJtFQreU6VZ6VXcd-_3LXjwU5Sap7PX6_FLYh9tW-N0VjfaHALXiw-vQeYNLJKPyE2SXDJxKlAnDeB2Qx9Fd42zDYeMt69Inpun2vSqfc6MMc9tCVWfJcueKqtaf0-NYMj2RioOlbMirI2NSdRZA96WAdo_qWJojTA_WJhoUAuQfT-ziFgbq4fSaANt5EMxJyL8-nqYFUkGgAjd0nKUEeguuY9kKFmSm1JdQ">
+</div>
+<div class="flex flex-col min-w-0 justify-center">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold tracking-wider text-white group-hover:text-primary transition-colors whitespace-nowrap">LR TECH FIX</span>
+<span class="text-[8px] xs:text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#D4AF37]/20 text-[#F2CA50] border border-[#D4AF37]/40 tracking-wider whitespace-nowrap">LAB PRO</span>
+</div>
+<div class="flex items-center gap-1 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping flex-shrink-0"></span>
+<span class="text-[9px] xs:text-[10px] text-[#00FF9D] font-medium tracking-tight truncate">Loja Aberta</span>
+</div>
+</div>
+</a>
+<!-- Ações Topo: Agendamento Inteligente + WhatsApp Rápido -->
+<div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
+<!-- Botão Agendar Horário (Header) -->
+<button class="btn-open-modal flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#D4AF37]/20 to-[#00E3FD]/20 border border-[#D4AF37]/60 text-white font-headline-lg font-bold text-[11px] sm:text-xs uppercase tracking-wider hover:border-[#D4AF37] hover:shadow-[0_0_15px_rgba(212,175,55,0.35)] active:scale-95 transition-all cursor-pointer whitespace-nowrap">
+<span class="material-symbols-outlined text-primary text-sm sm:text-base">calendar_month</span>
+<span class="text-primary font-bold">Agendar</span>
+<span class="hidden md:inline text-white">Horário</span>
+</button>
+<!-- Ação Direta WhatsApp Topo -->
+<a class="shimmer-gold flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F2CA50] text-[#1b1400] font-headline-lg font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(212,175,55,0.35)] hover:brightness-110 active:scale-95 transition-all whitespace-nowrap" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
+<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
+</svg>
+<span class="hidden xs:inline">WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Quick Navigation Anchors Responsivo com Scroll Suave Sem Scrollbar Feia -->
+
+</header>
+<!-- CONTEÚDO PRINCIPAL ONE-PAGE RESPONSIVO -->
+<main class="w-full max-w-5xl mx-auto pt-28 sm:pt-32 pb-24 px-3.5 sm:px-6 lg:px-8 flex flex-col gap-10 sm:gap-14 text-on-surface" id="inicio">
+<!-- HERO SECTION -->
+<section class="reveal-on-scroll flex flex-col lg:flex-row lg:items-center gap-6 sm:gap-8 pt-2 revealed">
+<div class="flex-1 flex flex-col gap-3.5 sm:gap-4 min-w-0">
+<!-- Live Telemetry Badge -->
+<div class="inline-flex items-center gap-1.5 sm:gap-2 self-start px-3 py-1.5 rounded-full bg-surface-container-high/90 border border-primary/30 backdrop-blur-md max-w-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
+<span class="text-[10px] sm:text-xs text-primary uppercase font-bold tracking-wider sm:tracking-widest truncate">Laboratório Cirúrgico de Alta Precisão</span>
+</div>
+<!-- Title & Headline Responsivos -->
+<div class="flex flex-col gap-2.5 sm:gap-3">
+<h1 class="font-headline-lg text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white leading-tight break-words">
+          Reparo Avançado de <br class="hidden sm:inline">
+<span class="bg-gradient-to-r from-primary via-[#ffd700] to-secondary bg-clip-text text-transparent">
+            Smartphones &amp; Eletrônicos
+          </span>
+</h1>
+<p class="text-xs sm:text-base text-on-surface-variant leading-relaxed max-w-2xl break-words">
+          Engenharia cirúrgica para Apple, Samsung e Android. Especialista em microsoldagem BGA em placa lógica, substituição de telas com selagem OEM, baterias saúde 100% e recuperação de aparelhos molhados.
+        </p>
+</div>
+<!-- CTAs Principais -->
+<div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mt-1 sm:mt-2">
+<button class="btn-open-modal shimmer-gold w-full sm:flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F2CA50] to-[#e6bd35] text-[#1b1400] font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.35)] hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer">
+<span class="material-symbols-outlined text-base sm:text-lg flex-shrink-0">calendar_month</span>
+<span class="truncate">AGENDAR HORÁRIO NA LOJA</span>
+</button>
+<a class="w-full sm:w-auto flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-high border border-white/10 hover:border-[#D4AF37]/50 text-white font-headline-lg font-semibold text-xs tracking-wider uppercase transition-all hover:bg-surface-container-highest whitespace-nowrap" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 fill-[#00FF9D] flex-shrink-0" viewBox="0 0 24 24">
+<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
+</svg>
+<span class="truncate">Falar com Técnico (84) 99609-3270</span>
+</a>
+</div>
+<!-- Badges de Confiança Adaptados para Telas Estreitas -->
+<div class="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1 text-center">
+<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
+<span class="text-[9px] xs:text-[10px] sm:text-xs text-primary uppercase font-bold font-headline-lg truncate">Diagnóstico</span>
+<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">Sem Custo</span>
+<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Laudo direto</span>
+</div>
+<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
+<span class="text-[9px] xs:text-[10px] sm:text-xs text-secondary uppercase font-bold font-headline-lg truncate">Garantia</span>
+<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">90 a 120 Dias</span>
+<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Certificado</span>
+</div>
+<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
+<span class="text-[9px] xs:text-[10px] sm:text-xs text-[#00FF9D] uppercase font-bold font-headline-lg truncate">Velocidade</span>
+<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">Express 24h</span>
+<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Pronta entrega</span>
+</div>
+</div>
+</div>
+<!-- Quick Preview Desktop Bancada -->
+<div class="w-full lg:w-96 flex-shrink-0">
+<div class="cyber-card relative rounded-2xl overflow-hidden bg-surface-container-low border border-[#D4AF37]/40 neon-border-gold group">
+<img alt="Bancada Cirúrgica LR TECH FIX" class="w-full h-52 xs:h-64 sm:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChDLlaSh25wjeq1ie1lGLZuMadFELqApEI--mPNgO8-fD_XZL1EY1u_G_-CKSfSJegwNliOjTyR-1k3aVasucGOApmzb1YDHDyfDF6akzoIiZQ96_iTs1slIs4JY0kpvrdZ62IugvJbrxn3r0jXcOYU7STTEQHJYIzi3pr0RPuCCAxLyGTXQmhJU1UK0TMupwvxLctSgYL97Q3FF0rdGs-vSvvdOsaqbX2tiq9O8WL16ng6X9b4XfFMdXgEV6D994_LQ">
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 p-2.5 sm:p-3 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between gap-2">
+<div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-base sm:text-xl flex-shrink-0">biotech</span>
+<span class="text-[11px] sm:text-xs font-headline-lg font-bold text-white truncate">Equipamentos Calibrados</span>
+</div>
+<span class="text-[9px] sm:text-[10px] font-mono text-[#00FF9D] font-bold flex-shrink-0">100% Operacional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- BANNER DESTACADO PARA AGENDAMENTO INTELIGENTE -->
+<section class="reveal-on-scroll relative overflow-hidden rounded-2xl bg-gradient-to-r from-surface-container-high via-surface-container-low to-surface-container-high border border-[#D4AF37]/40 p-4 sm:p-7 shadow-[0_0_35px_rgba(212,175,55,0.15)] revealed" id="agendamento-section">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-5">
+<div class="flex flex-col gap-1.5 max-w-xl min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary text-[10px] font-bold tracking-widest uppercase border border-secondary/30">Agendamento Prioritário</span>
+<span class="text-[10px] text-white/50 font-mono">Sem fila de espera</span>
+</div>
+<h2 class="font-headline-lg text-base xs:text-lg sm:text-2xl font-bold text-white uppercase tracking-tight break-words">
+          Reserve seu horário com o especialista
+        </h2>
+<p class="text-xs sm:text-sm text-on-surface-variant break-words">
+          Evite esperas desnecessárias. Agende o reparo na loja com data e turno de preferência para atendimento expresso.
+        </p>
+</div>
+<button class="btn-open-modal shimmer-gold flex-shrink-0 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F2CA50] text-black font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer w-full md:w-auto">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+<span class="">Agendar Horário na loja</span>
+</button>
+</div>
+</section>
+<!-- SEÇÃO BANCADA REAL & FOTOS DO TÉCNICO -->
+<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="bancada">
+<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[#D4AF37] text-[22px] sm:text-[24px] flex-shrink-0">biotech</span>
+<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Bancada Cirúrgica Real</h2>
+</div>
+<span class="text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-[#00FF9D] border border-emerald-500/30 whitespace-nowrap">MONITORAMENTO ATIVO</span>
+</div>
+<div class="cyber-card relative rounded-2xl overflow-hidden bg-surface-container-low border border-[#D4AF37]/40 neon-border-gold group">
+<img alt="Bancada técnica real LR TECH FIX com estação de ar quente, microscópio digital e fonte Nice Power" class="w-full h-56 xs:h-72 sm:h-96 object-cover object-center filter contrast-105 group-hover:scale-102 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1P8XI8hDUm40NIeaa2vT73U-nKOl4Ttnok8tM6x5osMjvrdn08NLdiOXmM3aG9tbfErv9rm33I4T56kVV82MDo_v5CdAE2DyH61Wr-JYJoF4vvo1gOP07HLNj7XQ-wIMbqWm2my2Vaa-T3e1z-p4q9UhOh5g2IPkG3PWnOP3vuKvM7qeyEfZvMA2oZFI1s5-R4SyYGr6UZvImuC2nOK0XkGUBE7DZtNTIGmyYQio-qq1go8d2MvlCB-vBuwzu7mmG3A">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-transparent to-black/50"></div>
+<!-- Hotspot Telemetria Nice-Power -->
+<div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/85 backdrop-blur-md border border-[#D4AF37]/50 max-w-[85%]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping flex-shrink-0"></span>
+<span class="text-[9px] sm:text-xs text-white font-headline-lg font-bold uppercase tracking-wider truncate">Estação de Trabalho Real</span>
+</div>
+<div class="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-6 p-2.5 sm:p-4 rounded-xl bg-[#141418]/90 backdrop-blur-md border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="material-symbols-outlined text-primary text-[22px] sm:text-[26px] flex-shrink-0">precision_manufacturing</span>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-lg text-xs sm:text-sm font-bold text-white truncate">Fonte Nice-Power &amp; Estação de Solda Ar Quente</span>
+<span class="text-[10px] sm:text-xs text-on-surface-variant truncate">Diagnóstico milimétrico de consumo de miliamperes em placa</span>
+</div>
+</div>
+<span class="text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded bg-primary/20 text-primary border border-primary/30 uppercase flex-shrink-0 self-start sm:self-auto">Calibrado Aferido</span>
+</div>
+</div>
+<p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed break-words">
+      Foto autêntica do laboratório LR TECH FIX. Cada dispositivo é trabalhado sobre manta antiestática térmica com instrumentos profissionais de aferição de corrente e microscopia de alta resolução.
+    </p>
+</section>
+<!-- CATÁLOGO DE SERVIÇOS & ESPECIALIDADES RESPONSIVO -->
+<section class="reveal-on-scroll flex flex-col gap-4 sm:gap-6 scroll-mt-28 revealed" id="servicos">
+<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[22px] sm:text-[24px] flex-shrink-0">memory</span>
+<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Especialidades do Laboratório</h2>
+</div>
+<span class="text-[11px] sm:text-xs text-primary font-headline-lg font-semibold whitespace-nowrap">Técnico Certificado Especialista</span>
+</div>
+<!-- Grid Adaptativo 1 col mobile / 2 col desktop -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+<!-- Serviço 1: Telas e Displays -->
+<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3.5 sm:gap-4">
+<div class="flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary border border-primary/20 flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">phone_iphone</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase leading-snug break-words">Troca de Telas OLED / IPS</h3>
+<span class="text-[10px] xs:text-[11px] text-secondary truncate block">Biometria, 120Hz e touch 100% testado</span>
+</div>
+</div>
+<span class="text-[9px] font-bold px-2 py-0.5 rounded bg-primary/20 text-primary uppercase flex-shrink-0">Premium</span>
+</div>
+<!-- Thumbnails reais do serviço -->
+<div class="grid grid-cols-2 gap-2 my-1">
+<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
+<img alt="Teste de tela Diamonds Parts One By One Tested na bancada" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW53yu1W6ZzlmUOztAcBnYu0CQVPBjoI4X4iIpBDiRSeMcCg6LA8nodeDzH35uLptbvnbJkeYigYDDhU7CjATg4M_L44c-g0mMcu6Ds_pbwTZK_FIFRjYcicDo49v9g8VhSE-Qqgf6OvB4AqtgdDO4vEgGZQOwiYPnSRblrHEvpO2MSYGY_bmwd_mAHxJSl2QVEMhwt_H4WjEM0kBd5rHbEA5BXyl5phJ7NOflLqMvKbxL5fgUD17GbY3aP0kv8RGz-w">
+<span class="absolute bottom-1 left-1 text-[8px] xs:text-[9px] px-1.5 py-0.5 rounded bg-black/80 text-white font-mono">1 by 1 Tested</span>
+</div>
+<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
+<img alt="Display restaurado novo com cores vivas e touch funcionando" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzqMJmoxRZ6Pe7uux7bQeyZ3mlNH_V2VDk_pRCsbHfph0T-f0LARvuDn380He3AXHrNOeMn9GvjLU55t7mCfa2u-jk32LP1wwJW15jWY_MjwU5njpFddJQLXsm1l-v-H1Mb_VhnWYr6wybNzgDVUbTAMObf8-kQWZ75jgZaXMNf6_zGg0rw_qc06kgsOGlxexmMd0RgLVEtBYa_8RpsTbrWdOzwIwwTTji86LuzBD1HeJX0T6kmLcvyMHAMMOQM9QzZA">
+<span class="absolute bottom-1 left-1 text-[8px] xs:text-[9px] px-1.5 py-0.5 rounded bg-black/80 text-[#00FF9D] font-mono">100% Calibrado</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed break-words">
+            Linha Platinum com calibração cirúrgica de vidro e touch. Instalação rápida sem manchas, sem toques fantasmas e com encaixe perfeito na carcaça.
+          </p>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<button class="btn-open-modal flex-1 py-2.5 px-3 rounded-lg bg-surface-container-high border border-[#D4AF37]/40 text-primary font-headline-lg text-xs font-bold text-center uppercase tracking-wider hover:bg-[#D4AF37] hover:text-black transition-all cursor-pointer truncate">
+            Agendar Troca de Tela
+          </button>
+<a class="p-2.5 rounded-lg bg-surface-container-high border border-white/10 text-white hover:text-primary transition-colors flex-shrink-0" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20troca%20de%20tela." rel="noopener noreferrer" target="_blank" title="Falar no WhatsApp">
+<span class="material-symbols-outlined text-base">chat</span>
+</a>
+</div>
+</div>
+<!-- Serviço 2: Reparo em Placa e Solda BGA -->
+<div class="cyber-card cyber-card-cyan p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3.5 sm:gap-4">
+<div class="flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary border border-secondary/20 flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">developer_board</span>
+</div>
+<div class="min-w-0">
+<h3 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase leading-snug break-words">Reparo em Placa &amp; BGA</h3>
+<span class="text-[10px] xs:text-[11px] text-[#00FF9D] truncate block">Aparelho não liga • Linha em curto</span>
+</div>
+</div>
+<span class="text-[9px] font-bold px-2 py-0.5 rounded bg-secondary/20 text-secondary uppercase flex-shrink-0">Nível 3</span>
+</div>
+<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
+<img alt="Desmontagem interna e análise de placa e blindagens A15 Bionic" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCum5jk2jKs_IF_18erH09O0EnKQolr0nAgLZc25MBuKXXOcf4RhDNexPlY_ijuvMW-IYL-y_6MvYJNZhcaphpifJ_WnrV1hU8BQx5aqNH6bBRK11dR9Z5_rbDcmTSyGXoz5na0GfCy5kY9oAQQ4iWpDNfs-QFHkQXoxDHnIeG9xPsb2hx8rCyzva9keavPJdDVRXIh64-smnCbPR4RbUkSkywqXqHM2nIhOh38W8obyWd9tanuLg5UYfzgwuloHxU8Mw">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[9px] sm:text-[10px]">
+<span class="text-white font-mono truncate">Microarquitetura Interna</span>
+<span class="text-primary font-bold flex-shrink-0 ml-1">Diagnóstico Placa</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed break-words">
+            Reconstrução de malhas de alimentação, reparo do circuito de carga (Tristar / Hydra / PMIC) e reballing em processadores e memórias.
+          </p>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<button class="btn-open-modal flex-1 py-2.5 px-3 rounded-lg bg-surface-container-high border border-secondary/40 text-secondary font-headline-lg text-xs font-bold text-center uppercase tracking-wider hover:bg-secondary hover:text-black transition-all cursor-pointer truncate">
+            Agendar Reparo em Placa
+          </button>
+<a class="p-2.5 rounded-lg bg-surface-container-high border border-white/10 text-white hover:text-secondary transition-colors flex-shrink-0" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20meu%20aparelho%20n%C3%A3o%20liga%2C%20preciso%20de%20reparo%20em%20placa." rel="noopener noreferrer" target="_blank" title="Falar no WhatsApp">
+<span class="material-symbols-outlined text-base">chat</span>
+</a>
+</div>
+</div>
+<!-- Serviço 3: Baterias e Conectores de Carga -->
+<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3">
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">battery_charging_full</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase truncate">Baterias &amp; Carga</h4>
+<p class="text-[10px] xs:text-[11px] text-on-surface-variant truncate">Saúde 100%, ciclo zero e conectores Type-C</p>
+</div>
+</div>
+<span class="text-[9px] px-2 py-0.5 rounded bg-white/10 text-white font-mono flex-shrink-0">100% Saúde</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed break-words">
+            Troca de bateria com células certificadas que não inflam nem aquecem. Substituição e limpeza de conector com mau contato ou oxidação.
+          </p>
+</div>
+<button class="btn-open-modal w-full py-2.5 px-3 rounded-lg bg-surface-container-high hover:border-primary/40 border border-white/5 text-primary text-xs font-headline-lg uppercase font-bold transition-all cursor-pointer truncate">
+          Agendar Troca de Bateria
+        </button>
+</div>
+<!-- Serviço 4: Desoxidação Ultrassônica Aparelhos Molhados -->
+<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3">
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-cyan-400 flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[22px]">water_damage</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase truncate">Banho Ultrassônico</h4>
+<p class="text-[10px] xs:text-[11px] text-cyan-300 truncate">Aparelhos caídos em água ou líquidos</p>
+</div>
+</div>
+<span class="text-[9px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold uppercase flex-shrink-0">Emergência</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed break-words">
+            Remoção profunda de óxidos sob chips integrados com álcool isopropílico 99.8% em cuba ultrassônica industrial para resgatar placas.
+          </p>
+</div>
+<button class="btn-open-modal w-full py-2.5 px-3 rounded-lg bg-surface-container-high hover:border-cyan-400/40 border border-white/5 text-cyan-300 text-xs font-headline-lg uppercase font-bold transition-all cursor-pointer truncate">
+          Agendar Desoxidação Urgente
+        </button>
+</div>
+</div>
+</section>
+<!-- ANTES & DEPOIS / PORTFÓLIO DE TRABALHO REAL -->
+<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="portfolio">
+<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[22px] sm:text-[24px] flex-shrink-0">compare</span>
+<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Antes &amp; Depois Real</h2>
+</div>
+<span class="text-[11px] sm:text-xs text-on-surface-variant font-mono whitespace-nowrap">Casos de Sucesso em Bancada</span>
+</div>
+<div class="cyber-card p-4 sm:p-6 rounded-2xl bg-surface-container-low border border-[#D4AF37]/30 flex flex-col gap-4 sm:gap-5">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-[#00FF9D] flex-shrink-0"></span>
+<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg truncate">Recuperação Total de Display Quebrado</span>
+</div>
+<span class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF9D] font-mono font-bold whitespace-nowrap">Entregue com Sucesso</span>
+</div>
+<!-- Comparação Visual Responsiva -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+<!-- Antes -->
+<div class="flex flex-col gap-2">
+<div class="relative rounded-xl overflow-hidden h-52 xs:h-64 sm:h-72 bg-black border border-red-500/30 group">
+<img alt="Tela destruída e trincada antes da intervenção" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoRWG_80Bt30F_bCwoj4LmXD9TPpeaa76fIyBJzuOfMskX-MJH9w6Xa48cjVJk1F1UdVoWKXJUfhir5VjiWYjlpfh60ZjIAR00746qMGb0xAJyinlNAlFzpwPy_6mG-2jKXE4QJlVCnW7xpsWvKfuI6DhtHoDc7rUsIVrN8Jd-V6GQT5qvTUWqpNaALi09RIEksNtorS6GqLKXNJXm-5twpnyj0omxeC717B4xiHyYLndp5Uw1Yfj4h2NmEvruVCUKuw">
+<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-red-600/90 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider font-headline-lg shadow">
+              Antes (Trincada)
+            </div>
+</div>
+<span class="text-[11px] sm:text-xs text-center text-red-400 font-medium break-words">Display com vidros estilhaçados e touch inoperante</span>
+</div>
+<!-- Depois -->
+<div class="flex flex-col gap-2">
+<div class="relative rounded-xl overflow-hidden h-52 xs:h-64 sm:h-72 bg-black border border-emerald-500/40 group">
+<img alt="Tela nova instalada com brilho nítido e funcionando perfeitamente" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4iddWEgDWL3pHcN1Os-eTIdzBbrnPrGSCxFzW4cm2dzx09HkMFXYr0Nbimu4yiFa5X-aqNatQEidufZgJMwIiAyoWqcS9CUpwexfPSUWCufIaHQbKVxc9GoZM8GmI3QH3anAeyF_NpLviDeOrTnPqGkI-CxkDij0kUiPOu4hsU80LfwxmS_eHWuTO6lYFHT__zbJfrtMSU_7Hk8MuVeTiWBK8sKYQcUvznl_s65B-aMYnpDg1QZp4hQ5_KyvYBUNHTw">
+<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-emerald-600/90 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider font-headline-lg shadow">
+              Depois (Restaurado)
+            </div>
+</div>
+<span class="text-[11px] sm:text-xs text-center text-[#00FF9D] font-medium break-words">Instalação finalizada, vedado e 100% calibrado</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-white/5">
+<p class="text-xs sm:text-sm text-on-surface-variant text-center sm:text-left break-words">
+          Aparelho recuperado em menos de 1 hora no laboratório LR TECH FIX mantendo todas as funções originais.
+        </p>
+<button class="btn-open-modal shimmer-gold w-full sm:w-auto flex-shrink-0 py-3 px-5 rounded-xl bg-gradient-to-r from-primary to-[#D4AF37] text-black font-headline-lg text-xs font-bold text-center uppercase tracking-wider shadow hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap">
+          Quero Recuperar Meu Celular Assim
+        </button>
+</div>
+</div>
+</section>
+<!-- METODOLOGIA LABORATORIAL (4 FASES RESPONSIVO) -->
+<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="metodologia">
+<div class="flex items-center gap-2 border-b border-white/10 pb-3">
+<span class="material-symbols-outlined text-secondary text-[22px] sm:text-[24px]">checklist_rtl</span>
+<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Metodologia em 4 Fases</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
+<div class="flex items-center justify-between">
+<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/20 text-primary font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">01</span>
+<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 1</span>
+</div>
+<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Triagem &amp; Medição</span>
+<span class="text-xs text-on-surface-variant leading-relaxed break-words">Inspeção em fonte digital de bancada para detectar consumo anormal e curtos sem abrir desnecessariamente.</span>
+</div>
+<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
+<div class="flex items-center justify-between">
+<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-secondary/20 text-secondary font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">02</span>
+<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 2</span>
+</div>
+<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Desmontagem Blindada</span>
+<span class="text-xs text-on-surface-variant leading-relaxed break-words">Uso de fita Kapton antiestática, aquecedor térmico calibrado e ferramentas específicas sem marcar a carcaça.</span>
+</div>
+<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
+<div class="flex items-center justify-between">
+<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/20 text-[#00FF9D] font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">03</span>
+<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 3</span>
+</div>
+<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Teste 1 a 1 de Touch</span>
+<span class="text-xs text-on-surface-variant leading-relaxed break-words">Checagem minuciosa de cada ponto da tela, câmeras, sensores de proximidade, alto-falante e microfones.</span>
+</div>
+<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
+<div class="flex items-center justify-between">
+<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#D4AF37]/20 text-[#D4AF37] font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">04</span>
+<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 4</span>
+</div>
+<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Vedação OEM &amp; Laudo</span>
+<span class="text-xs text-on-surface-variant leading-relaxed break-words">Aplicação de adesivos originais de alta resistência, limpeza geral e emissão do termo de garantia de bancada.</span>
+</div>
+</div>
+</section>
+<!-- SELOS DE CONFIANÇA & AUTORIDADE RESPONSIVO -->
+<section class="reveal-on-scroll p-4 sm:p-7 rounded-2xl bg-gradient-to-b from-surface-container-high to-surface-container-low border border-[#D4AF37]/30 shadow-xl flex flex-col gap-4 sm:gap-5 revealed">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#D4AF37] text-[24px] sm:text-[26px]">verified</span>
+<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Autoridade LR TECH FIX</h2>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
+<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-primary truncate">+1.500</span>
+<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Aparelhos Salvos</span>
+<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Taxa de 94.8% em placas</span>
+</div>
+<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
+<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-secondary truncate">90 a 120d</span>
+<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Garantia Efetiva</span>
+<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Termo em todas peças</span>
+</div>
+<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
+<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-[#00FF9D] truncate">100%</span>
+<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Transparência</span>
+<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Fotos do aparelho aberto</span>
+</div>
+<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
+<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-amber-300 truncate">Direto</span>
+<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Com Especialista</span>
+<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Sem terceirização</span>
+</div>
+</div>
+</section>
+<!-- RODAPÉ TÉCNICO COMPLETO RESPONSIVO -->
+<footer class="pt-6 pb-14 border-t border-white/10 flex flex-col items-center text-center gap-3 sm:gap-4 px-2">
+<div class="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-center">
+<img alt="LR TECH FIX" class="h-7 sm:h-8 w-auto object-contain opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaHJlr_CllhasY98M0rZxg-cW0NOOuHcV98RPXLbeLYmbOZzd424XwQNPrfKqpEalo1FH92Esfb1aeqEfZQ48qwQBHl2TWTDVeOwbrb1YffNFo_eVY2jT8oAGdiYgyuLekiylyIM8qaXIPGBnNKYjFcAqasK1I4YxU8pfkXDnpk8grK-WQga4HZ9WL9ytSis8N5HS5MAISl3CCBc9DHcqTGP-V8JnpVwRuR2EeYncxligufUX3JFXKkPsE1KuY5GPqRw">
+<span class="font-headline-lg text-xs sm:text-sm font-bold text-white tracking-widest uppercase">LR TECH FIX • ASSISTÊNCIA TÉCNICA</span>
+</div>
+<p class="text-xs text-on-surface-variant max-w-lg leading-relaxed break-words">
+      Laboratório de eletrônica avançada especializado em microsoldagem BGA, substituição de componentes originais e restauração de celulares.<br>
+      Telefone direto: <strong class="text-white font-mono">(84) 99609-3270</strong>
+</p>
+<div class="text-[10px] sm:text-[11px] text-on-surface-variant/60 font-mono">
+      © 2025 LR TECH FIX. Todos os direitos reservados.
+    </div>
+</footer>
+</main>
+<!-- BOLINHA FLUTUANTE DO WHATSAPP -->
+<a aria-label="Falar no WhatsApp com LR TECH FIX (84) 99609-3270" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00D95A] text-[#0d0d0f] shadow-[0_0_24px_rgba(0,217,90,0.65)] hover:scale-110 active:scale-95 transition-all duration-300 group" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
+<span class="absolute inset-0 rounded-full bg-[#00FF9D] animate-ping opacity-35 pointer-events-none"></span>
+<span class="absolute -inset-1 rounded-full border border-[#00FF9D]/60 animate-pulse pointer-events-none"></span>
+<svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current relative z-10" viewBox="0 0 24 24">
+<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
+</svg>
+</a>
+<!-- MODAL DE AGENDAMENTO RESPONSIVO & ANTI-ZOOM iOS -->
+<!-- ========================================== -->
+<!-- ========================================== -->
+<div aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" id="modal-agendamento" role="dialog">
+<div class="relative w-[96%] max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0f0f13] border border-[#D4AF37]/50 shadow-[0_0_40px_rgba(212,175,55,0.25)] p-4 sm:p-6 flex flex-col gap-3.5 sm:gap-4 transform scale-95 transition-transform duration-300" id="modal-content">
+<!-- Header do Modal -->
+<div class="flex items-start justify-between border-b border-white/10 pb-3 gap-2">
+<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px] sm:text-[24px]">calendar_clock</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h3 class="font-headline-lg text-sm sm:text-base font-bold text-white uppercase tracking-tight truncate">Agendar na Bancada</h3>
+<span class="text-[8px] font-bold px-1.5 py-0.5 rounded bg-secondary/20 text-secondary border border-secondary/30 whitespace-nowrap">ONLINE</span>
+</div>
+<p class="text-[11px] sm:text-xs text-on-surface-variant truncate">Atendimento exclusivo com técnico</p>
+</div>
+</div>
+<!-- Botão Fechar -->
+<button aria-label="Fechar Modal" class="text-on-surface-variant hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors flex-shrink-0" id="btn-close-modal">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Formulário de Agendamento com Inputs text-base (16px) no mobile para evitar zoom indevido -->
+<form class="flex flex-col gap-3 sm:gap-3.5" id="form-agendamento" onsubmit="return false;">
+<!-- Grid Nome e WhatsApp -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-nome">
+            1. Seu Nome Completo <span class="text-primary">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-nome" placeholder="Ex: Carlos Eduardo" required="" type="text">
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-whatsapp">
+            2. WhatsApp / Telefone <span class="text-primary">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-whatsapp" placeholder="(84) 9____-____" required="" type="tel">
+</div>
+</div>
+<!-- Aparelho Modelo -->
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-modelo">
+          3. Marca &amp; Modelo do Aparelho <span class="text-primary">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-modelo" placeholder="Ex: iPhone 13 Pro, Samsung S23, Xiaomi..." required="" type="text">
+</div>
+<!-- Tipo de Serviço (Chips Responsivos) -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90">
+          4. Tipo de Serviço Desejado <span class="text-primary">*</span>
+</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2" id="servicos-chips">
+<button class="service-chip py-2 px-2 rounded-lg border border-[#D4AF37] bg-[#D4AF37]/20 text-white text-[11px] font-bold text-left transition-all cursor-pointer truncate" data-service="Troca de Tela / Display OLED" type="button">
+            📱 Troca de Tela
+          </button>
+<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Reparo em Placa Lógica / Solda BGA" type="button">
+            ⚡ Reparo Placa
+          </button>
+<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Troca de Bateria 100% Saúde" type="button">
+            🔋 Bateria Nova
+          </button>
+<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Banho Químico / Aparelho Molhado" type="button">
+            💧 Desoxidação
+          </button>
+<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Conector de Carga / Microfone" type="button">
+            🔌 Conector Carga
+          </button>
+<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Outro Serviço" type="button">
+            ⚙️ Outro
+          </button>
+</div>
+<input id="selected-service-value" type="hidden" value="Troca de Tela / Display OLED">
+</div>
+<!-- Descrição do Ocorrido -->
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-defeito">
+          5. O que aconteceu com o aparelho?
+        </label>
+<textarea class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none resize-none" id="agenda-defeito" placeholder="Ex: Caiu no chão e tela apagou, não carrega..." rows="2"></textarea>
+</div>
+<!-- Data e Horário -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-data">
+            6. Data Desejada <span class="text-primary">*</span>
+</label>
+<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white focus:border-primary focus:ring-0 outline-none" id="agenda-data" required="" type="date">
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-turno">
+            7. Turno / Horário
+          </label>
+<select class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white focus:border-primary focus:ring-0 outline-none" id="agenda-turno">
+<option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
+<option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
+<option value="Primeiro Horário Disponível">Primeiro Horário Livre</option>
+</select>
+</div>
+</div>
+<!-- Erro Feedback -->
+<div class="hidden text-xs text-red-400 font-bold bg-red-950/40 p-2.5 rounded-lg border border-red-500/30" id="agenda-error-msg">
+        Por favor preencha seu nome e o modelo do aparelho.
+      </div>
+<!-- Botão Submit Agendamento -->
+<button class="shimmer-gold w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F2CA50] to-[#e6bd35] text-[#1b1400] font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-1" id="btn-submit-agendamento" type="button">
+<span class="">Confirmar Agendamento no WhatsApp ➔</span>
+</button>
+<div class="text-[10px] text-center text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-[#00FF9D]">lock</span>
+<span class="">Dados enviados com segurança diretamente ao técnico.</span>
+</div>
+</form>
+</div>
+</div>
+<!-- SCRIPTS INTERATIVOS & CONTROLE MODAL -->
+<!-- ========================================== -->
+<!-- ========================================== -->
+<script>
+  // Configurar data de amanhã como padrão
+  (function setInitialDate() {
+    const dataInput = document.getElementById('agenda-data');
+    if (dataInput) {
+      const today = new Date();
+      today.setDate(today.getDate() + 1);
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dataInput.value = `${yyyy}-${mm}-${dd}`;
+      dataInput.min = new Date().toISOString().split('T')[0];
+    }
+  })();
+
+  // IntersectionObserver para Fade-In Suave
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: "0px 0px -30px 0px"
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  });
+
+  // CONTROLE DO MODAL DE AGENDAMENTO
+  const modal = document.getElementById('modal-agendamento');
+  const modalContent = document.getElementById('modal-content');
+  const openModalBtns = document.querySelectorAll('.btn-open-modal');
+  const closeModalBtn = document.getElementById('btn-close-modal');
+
+  function openModal() {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+    modalContent.classList.remove('scale-95');
+    modalContent.classList.add('scale-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modalContent.classList.remove('scale-100');
+    modalContent.classList.add('scale-95');
+    document.body.style.overflow = '';
+  }
+
+  openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
+      closeModal();
+    }
+  });
+
+  // SELEÇÃO DE CHIPS DE SERVIÇO
+  const serviceChips = document.querySelectorAll('.service-chip');
+  const selectedServiceInput = document.getElementById('selected-service-value');
+
+  serviceChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      serviceChips.forEach(c => {
+        c.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/20', 'text-white', 'font-bold');
+        c.classList.add('border-white/10', 'bg-surface-container-high', 'text-on-surface-variant');
+      });
+      chip.classList.remove('border-white/10', 'bg-surface-container-high', 'text-on-surface-variant');
+      chip.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/20', 'text-white', 'font-bold');
+      
+      const serv = chip.getAttribute('data-service') || 'Serviço Geral';
+      selectedServiceInput.value = serv;
+    });
+  });
+
+  // SUBMIT DO AGENDAMENTO PARA O WHATSAPP 5584996093270
+  const submitAgendamentoBtn = document.getElementById('btn-submit-agendamento');
+  const errorMsg = document.getElementById('agenda-error-msg');
+
+  if (submitAgendamentoBtn) {
+    submitAgendamentoBtn.addEventListener('click', () => {
+      const nome = document.getElementById('agenda-nome').value.trim();
+      const whatsapp = document.getElementById('agenda-whatsapp').value.trim();
+      const modelo = document.getElementById('agenda-modelo').value.trim();
+      const servico = selectedServiceInput.value || 'Geral';
+      const relato = document.getElementById('agenda-defeito').value.trim() || 'Avaliação direta na bancada';
+      const dataVal = document.getElementById('agenda-data').value;
+      const turno = document.getElementById('agenda-turno').value;
+
+      if (!nome || !modelo) {
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+      errorMsg.classList.add('hidden');
+
+      let dataFormatada = dataVal;
+      if (dataVal) {
+        const parts = dataVal.split('-');
+        if (parts.length === 3) {
+          dataFormatada = `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+      } else {
+        dataFormatada = 'A combinar';
+      }
+
+      const textMsg = `Olá, quero agendar um serviço na LR TECH FIX!\n\n👤 *Cliente:* ${nome}\n📞 *WhatsApp:* ${whatsapp}\n📱 *Aparelho:* ${modelo}\n🛠️ *Serviço:* ${servico}\n📝 *Defeito / Relato:* ${relato}\n📅 *Data:* ${dataFormatada}\n⏰ *Horário:* ${turno}\n\nEstou aguardando a confirmação da bancada.`;
+
+      const encoded = encodeURIComponent(textMsg);
+      const waUrl = `https://wa.me/5584996093270?text=${encoded}`;
+      
+      closeModal();
+      window.open(waUrl, '_blank');
+    });
+  }
+</script>
+</body></html>
