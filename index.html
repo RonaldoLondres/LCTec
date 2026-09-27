@@ -1,76 +1,55 @@
-<!DOCTYPE html><html class="dark scroll-smooth" lang="pt-BR" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport">
-<title>LR TECH FIX | Reparo Avançado de Smartphones &amp; Eletrônicos</title>
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OpenWord - Imóveis em Destaque &amp; Vitrine de Propriedades</title>
+<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<script>
     tailwind.config = {
-      darkMode: "class",
+      darkMode: 'class',
       theme: {
         extend: {
-          screens: {
-            'xs': '380px',
-          },
           colors: {
-            "surface-container-lowest": "#08080a",
-            "on-secondary-container": "#00616d",
-            "on-surface-variant": "#d0c5af",
-            "surface-container-high": "#232327",
-            "on-error-container": "#ffdad6",
-            "inverse-on-surface": "#313032",
-            "on-background": "#e5e1e4",
-            "secondary": "#00E3FD",
-            "primary": "#F2CA50",
-            "secondary-fixed-dim": "#00daf3",
-            "surface-container-low": "#141417",
-            "tertiary": "#c4cee2",
-            "secondary-container": "#004f58",
-            "primary-container": "#D4AF37",
-            "on-secondary": "#00363d",
-            "primary-fixed": "#ffe088",
-            "surface-bright": "#333338",
-            "surface-tint": "#e9c349",
-            "outline": "#99907c",
-            "outline-variant": "#3f3b30",
-            "surface-container-highest": "#2e2e34",
-            "surface": "#0f0f12",
-            "background": "#0a0a0d",
-            "surface-container": "#1a1a1e",
-            "on-surface": "#e5e1e4",
-            "on-primary": "#241a00"
+            neon: '#00e6a8',
+            'neon-hover': '#00c790',
+            darknavy: '#050f1a',
+            cardnavy: '#081726',
+            brandblue: '#38bdf8',
+            brandyellow: '#eab308'
           },
-          fontFamily: {
-            "body-md": ["Inter", "sans-serif"],
-            "headline-lg": ["Space Grotesk", "sans-serif"],
-            "title-md": ["Space Grotesk", "sans-serif"]
+          boxShadow: {
+            'neon': '0 0 20px -3px rgba(0, 230, 168, 0.45)',
+            'neon-lg': '0 0 35px -2px rgba(0, 230, 168, 0.6)'
           }
         }
       }
-    };
-  </script>
-<style>
-    @layer base {
-      html, body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #0a0a0d;
-        color: #e5e1e4;
-        overflow-x: hidden;
-      }
-      .pb-safe {
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-      }
-      .pt-safe {
-        padding-top: env(safe-area-inset-top, 0px);
-      }
     }
-    
-    /* Scrollbar oculta elegante para nav horizontal */
+  </script>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style data-purpose="custom-styling">
+    body {
+      background-color: #040c16;
+      color: #e2e8f0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050f1a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0d283f;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00e6a8;
+    }
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -78,779 +57,1496 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #D4AF37;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0e0e12;
-    }
-    
-    /* Efeitos Futuristas de Glow Cyber */
-    .cyber-card {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    @media (hover: hover) {
-      .cyber-card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(212, 175, 55, 0.55);
-        box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25), 0 0 15px rgba(0, 227, 253, 0.15);
-      }
-      .cyber-card-cyan:hover {
-        border-color: rgba(0, 227, 253, 0.6);
-        box-shadow: 0 10px 30px -10px rgba(0, 227, 253, 0.3);
-      }
-    }
-
-    /* Shimmer Metálico Dourado */
-    .shimmer-gold {
-      position: relative;
-      overflow: hidden;
-    }
-    .shimmer-gold::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 40%;
-      height: 200%;
-      background: linear-gradient(
-        60deg,
-        rgba(255, 255, 255, 0) 20%,
-        rgba(255, 255, 255, 0.45) 50%,
-        rgba(255, 255, 255, 0) 80%
-      );
-      transform: rotate(25deg);
-      animation: metallicShimmer 4.5s infinite;
-      pointer-events: none;
-    }
-    @keyframes metallicShimmer {
-      0% { left: -70%; }
-      30%, 100% { left: 140%; }
-    }
-
-    .neon-border-gold {
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.22), inset 0 0 12px rgba(212, 175, 55, 0.08);
-    }
-    .neon-border-cyan {
-      box-shadow: 0 0 20px rgba(0, 227, 253, 0.2), inset 0 0 10px rgba(0, 227, 253, 0.08);
-    }
-
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-on-scroll.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .cyber-bg-grid {
-      background-size: 32px 32px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    }
-
-    /* Prevenir zoom no iOS Safari ao focar inputs */
-    @media screen and (max-width: 768px) {
-      input, select, textarea {
-        font-size: 16px !important;
-      }
-    }
   </style>
 </head>
-<body class="font-body-md bg-[#0a0a0d] text-on-surface antialiased selection:bg-primary selection:text-black cyber-bg-grid relative min-h-screen overflow-x-hidden">
-<!-- TOP HEADER FIXO RESPONSIVO -->
-<header class="fixed top-0 inset-x-0 z-50 pt-safe bg-[#08080a]/95 backdrop-blur-xl border-b border-[#D4AF37]/25 shadow-[0_4px_30px_rgba(0,0,0,0.85)]">
-<div class="h-16 px-3 sm:px-6 max-w-6xl mx-auto flex items-center justify-between gap-2">
-<!-- Logo Oficial e Identificação Flexível -->
-<a class="flex items-center gap-2 sm:gap-3 min-w-0 group flex-shrink" href="#inicio">
-<div class="h-10 w-11 sm:w-12 flex-shrink-0 flex items-center justify-center p-1 rounded-lg bg-surface-container-low border border-[#D4AF37]/40 shadow-inner group-hover:border-[#D4AF37] transition-colors">
-<img alt="LR TECH FIX Assistência Técnica" class="h-full w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw4RhmV9JYUFzTyBcA5gK7hKUOuqI833TJtFQreU6VZ6VXcd-_3LXjwU5Sap7PX6_FLYh9tW-N0VjfaHALXiw-vQeYNLJKPyE2SXDJxKlAnDeB2Qx9Fd42zDYeMt69Inpun2vSqfc6MMc9tCVWfJcueKqtaf0-NYMj2RioOlbMirI2NSdRZA96WAdo_qWJojTA_WJhoUAuQfT-ziFgbq4fSaANt5EMxJyL8-nqYFUkGgAjd0nKUEeguuY9kKFmSm1JdQ">
+<body class="min-h-screen flex flex-col selection:bg-neon selection:text-black overflow-x-hidden">
+<!-- Toast Notification -->
+<div class="fixed top-4 right-4 sm:top-5 sm:right-5 z-50 transform translate-x-[120%] transition-transform duration-300 pointer-events-none max-w-[90vw] sm:max-w-sm" id="toast">
+<div class="bg-cardnavy border border-neon/50 text-white px-4 py-3 rounded-2xl shadow-neon flex items-center gap-3 backdrop-blur-md">
+<div class="w-8 h-8 rounded-full bg-neon/20 flex items-center justify-center text-neon flex-shrink-0" id="toast-icon">
+<i class="fa-solid fa-bell"></i>
 </div>
-<div class="flex flex-col min-w-0 justify-center">
-<div class="flex items-center gap-1.5 flex-wrap">
-<span class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold tracking-wider text-white group-hover:text-primary transition-colors whitespace-nowrap">LR TECH FIX</span>
-<span class="text-[8px] xs:text-[9px] font-bold px-1.5 py-0.2 rounded bg-[#D4AF37]/20 text-[#F2CA50] border border-[#D4AF37]/40 tracking-wider whitespace-nowrap">LAB PRO</span>
-</div>
-<div class="flex items-center gap-1 min-w-0">
-<span class="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping flex-shrink-0"></span>
-<span class="text-[9px] xs:text-[10px] text-[#00FF9D] font-medium tracking-tight truncate">Loja Aberta</span>
+<div class="text-xs">
+<p class="font-bold text-neon" id="toast-title">Aviso</p>
+<p class="text-slate-300" id="toast-message">Mensagem da notificação</p>
 </div>
 </div>
-</a>
-<!-- Ações Topo: Agendamento Inteligente + WhatsApp Rápido -->
-<div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
-<!-- Botão Agendar Horário (Header) -->
-<button class="btn-open-modal flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#D4AF37]/20 to-[#00E3FD]/20 border border-[#D4AF37]/60 text-white font-headline-lg font-bold text-[11px] sm:text-xs uppercase tracking-wider hover:border-[#D4AF37] hover:shadow-[0_0_15px_rgba(212,175,55,0.35)] active:scale-95 transition-all cursor-pointer whitespace-nowrap">
-<span class="material-symbols-outlined text-primary text-sm sm:text-base">calendar_month</span>
-<span class="text-primary font-bold">Agendar</span>
-<span class="hidden md:inline text-white">Horário</span>
+</div>
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 bg-darknavy/95 backdrop-blur-md border-b border-cyan-950/60 px-3 sm:px-6 py-3 sm:py-4 transition-all">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+<!-- Brand Logo & Mobile Menu Toggle -->
+<div class="flex items-center gap-2 sm:gap-3">
+<button class="md:hidden w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-neon flex items-center justify-center transition" onclick="toggleMobileNav()" title="Abrir Menu">
+<i class="fa-solid fa-bars text-sm" id="mobile-menu-icon"></i>
 </button>
-<!-- Ação Direta WhatsApp Topo -->
-<a class="shimmer-gold flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F2CA50] text-[#1b1400] font-headline-lg font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(212,175,55,0.35)] hover:brightness-110 active:scale-95 transition-all whitespace-nowrap" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
-<svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
-</svg>
-<span class="hidden xs:inline">WhatsApp</span>
+<a class="flex items-center gap-1.5 group select-none" href="#">
+<span class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white group-hover:opacity-90">Open<span class="text-neon drop-shadow-[0_0_12px_rgba(0,230,168,0.8)]">Word</span></span>
 </a>
 </div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-xs lg:text-sm text-slate-300">
+<a class="hover:text-neon transition" href="#destaque">Destaque</a>
+<a class="hover:text-neon transition" href="#vitrine-section">Imóveis</a>
+<a class="hover:text-neon transition" href="#filtros-section" onclick="filterProperties('aluguel')">Aluguéis</a>
+<a class="hover:text-neon transition" href="#filtros-section" onclick="filterProperties('venda')">A Venda</a>
+<a class="hover:text-neon transition" href="#filtros-section" onclick="filterProperties('lazer')">Lazer</a>
+<a class="hover:text-neon transition" href="#suporte">Suporte</a>
+</nav>
+<!-- User Profile & Action -->
+<div class="flex items-center gap-1.5 sm:gap-3 relative">
+<!-- Announce Button -->
+<button class="inline-flex items-center justify-center gap-1.5 text-xs font-bold uppercase tracking-wider bg-transparent text-neon border border-neon/50 px-2.5 sm:px-4 py-2 rounded-full hover:bg-neon hover:text-black transition duration-300 shadow-sm shrink-0 min-h-[36px]" onclick="handleAnnounceClick()">
+<i class="fa-solid fa-plus text-xs"></i> <span class="hidden xs:inline text-[11px] sm:text-xs">Anunciar</span>
+</button>
+<!-- Account Button (Defaults to LOGGED OUT) -->
+<div class="relative">
+<button class="flex items-center gap-1.5 sm:gap-2 bg-darknavy border border-cyan-800/60 hover:border-neon px-2 sm:px-3 py-1.5 rounded-full transition shadow-sm min-h-[36px]" id="account-btn" onclick="handleAccountButtonClick()">
+<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-neon/15 border border-neon/70 flex items-center justify-center text-neon text-xs font-bold overflow-hidden" id="account-avatar-wrapper">
+<i class="fa-regular fa-user" id="account-default-icon"></i>
+<img alt="Foto de Perfil" class="w-full h-full object-cover hidden" id="account-header-img" src=""/>
 </div>
-<!-- Quick Navigation Anchors Responsivo com Scroll Suave Sem Scrollbar Feia -->
-
+<span class="text-[11px] sm:text-xs font-semibold text-white tracking-wide pr-0.5 sm:pr-1 max-w-[80px] sm:max-w-[120px] truncate" id="account-btn-label">CONTA</span>
+<i class="fa-solid fa-chevron-down text-[9px] text-slate-400 hidden" id="account-chevron"></i>
+</button>
+<!-- Logged-in Dropdown Menu -->
+<div class="hidden absolute right-0 mt-2 w-52 sm:w-56 rounded-2xl bg-cardnavy border border-cyan-900/60 shadow-2xl p-2 z-50 text-xs" id="account-dropdown">
+<div class="px-3 py-2 border-b border-slate-800">
+<p class="font-bold text-white truncate" id="dropdown-user-name">Visitante</p>
+<p class="text-[11px] text-slate-400 font-mono truncate" id="dropdown-user-email">email@openword.com</p>
+</div>
+<div class="py-1">
+<button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/80 text-slate-300 hover:text-neon flex items-center gap-2 transition" onclick="openProfileDetails(); toggleDropdown();">
+<i class="fa-regular fa-id-badge text-neon"></i> Meu Perfil
+            </button>
+<button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/80 text-slate-300 hover:text-neon flex items-center gap-2 transition" onclick="filterMyProperties(); toggleDropdown();">
+<i class="fa-solid fa-layer-group text-brandblue"></i> Minhas Publicações
+            </button>
+<button class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/80 text-slate-300 hover:text-neon flex items-center gap-2 transition" onclick="handleAnnounceClick(); toggleDropdown();">
+<i class="fa-solid fa-circle-plus text-neon"></i> Novo Anúncio
+            </button>
+</div>
+<div class="border-t border-slate-800 pt-1">
+<button class="w-full text-left px-3 py-2 rounded-xl hover:bg-red-500/10 text-red-400 hover:text-red-300 flex items-center gap-2 transition font-semibold" onclick="logoutUser()">
+<i class="fa-solid fa-arrow-right-from-bracket"></i> Sair da Conta
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation Drawer -->
+<div class="md:hidden hidden border-t border-slate-800 mt-3 pt-3 pb-2 space-y-2 text-sm text-slate-300" id="mobile-nav">
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#destaque" onclick="toggleMobileNav()">Destaque</a>
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#vitrine-section" onclick="toggleMobileNav()">Vitrine de Imóveis</a>
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#filtros-section" onclick="filterProperties('aluguel'); toggleMobileNav();">Aluguéis</a>
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#filtros-section" onclick="filterProperties('venda'); toggleMobileNav();">A Venda</a>
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#filtros-section" onclick="filterProperties('lazer'); toggleMobileNav();">Lazer</a>
+<a class="block px-3 py-2 rounded-xl hover:bg-slate-900 hover:text-neon transition" href="#suporte" onclick="toggleMobileNav()">Suporte &amp; Contato</a>
+</div>
 </header>
-<!-- CONTEÚDO PRINCIPAL ONE-PAGE RESPONSIVO -->
-<main class="w-full max-w-5xl mx-auto pt-28 sm:pt-32 pb-24 px-3.5 sm:px-6 lg:px-8 flex flex-col gap-10 sm:gap-14 text-on-surface" id="inicio">
-<!-- HERO SECTION -->
-<section class="reveal-on-scroll flex flex-col lg:flex-row lg:items-center gap-6 sm:gap-8 pt-2 revealed">
-<div class="flex-1 flex flex-col gap-3.5 sm:gap-4 min-w-0">
-<!-- Live Telemetry Badge -->
-<div class="inline-flex items-center gap-1.5 sm:gap-2 self-start px-3 py-1.5 rounded-full bg-surface-container-high/90 border border-primary/30 backdrop-blur-md max-w-full">
-<span class="w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
-<span class="text-[10px] sm:text-xs text-primary uppercase font-bold tracking-wider sm:tracking-widest truncate">Laboratório Cirúrgico de Alta Precisão</span>
-</div>
-<!-- Title & Headline Responsivos -->
-<div class="flex flex-col gap-2.5 sm:gap-3">
-<h1 class="font-headline-lg text-xl xs:text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white leading-tight break-words">
-          Reparo Avançado de <br class="hidden sm:inline">
-<span class="bg-gradient-to-r from-primary via-[#ffd700] to-secondary bg-clip-text text-transparent">
-            Smartphones &amp; Eletrônicos
-          </span>
-</h1>
-<p class="text-xs sm:text-base text-on-surface-variant leading-relaxed max-w-2xl break-words">
-          Engenharia cirúrgica para Apple, Samsung e Android. Especialista em microsoldagem BGA em placa lógica, substituição de telas com selagem OEM, baterias saúde 100% e recuperação de aparelhos molhados.
-        </p>
-</div>
-<!-- CTAs Principais -->
-<div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mt-1 sm:mt-2">
-<button class="btn-open-modal shimmer-gold w-full sm:flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F2CA50] to-[#e6bd35] text-[#1b1400] font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.35)] hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer">
-<span class="material-symbols-outlined text-base sm:text-lg flex-shrink-0">calendar_month</span>
-<span class="truncate">AGENDAR HORÁRIO NA LOJA</span>
-</button>
-<a class="w-full sm:w-auto flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-surface-container-high border border-white/10 hover:border-[#D4AF37]/50 text-white font-headline-lg font-semibold text-xs tracking-wider uppercase transition-all hover:bg-surface-container-highest whitespace-nowrap" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
-<svg class="w-4 h-4 fill-[#00FF9D] flex-shrink-0" viewBox="0 0 24 24">
-<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
-</svg>
-<span class="truncate">Falar com Técnico (84) 99609-3270</span>
-</a>
-</div>
-<!-- Badges de Confiança Adaptados para Telas Estreitas -->
-<div class="grid grid-cols-3 gap-2 sm:gap-3.5 pt-1 text-center">
-<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
-<span class="text-[9px] xs:text-[10px] sm:text-xs text-primary uppercase font-bold font-headline-lg truncate">Diagnóstico</span>
-<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">Sem Custo</span>
-<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Laudo direto</span>
-</div>
-<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
-<span class="text-[9px] xs:text-[10px] sm:text-xs text-secondary uppercase font-bold font-headline-lg truncate">Garantia</span>
-<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">90 a 120 Dias</span>
-<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Certificado</span>
-</div>
-<div class="cyber-card flex flex-col p-2.5 sm:p-3 rounded-xl bg-surface-container-low border border-white/10 min-w-0">
-<span class="text-[9px] xs:text-[10px] sm:text-xs text-[#00FF9D] uppercase font-bold font-headline-lg truncate">Velocidade</span>
-<span class="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">Express 24h</span>
-<span class="text-[8px] xs:text-[9px] sm:text-[10px] text-on-surface-variant truncate">Pronta entrega</span>
-</div>
-</div>
-</div>
-<!-- Quick Preview Desktop Bancada -->
-<div class="w-full lg:w-96 flex-shrink-0">
-<div class="cyber-card relative rounded-2xl overflow-hidden bg-surface-container-low border border-[#D4AF37]/40 neon-border-gold group">
-<img alt="Bancada Cirúrgica LR TECH FIX" class="w-full h-52 xs:h-64 sm:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChDLlaSh25wjeq1ie1lGLZuMadFELqApEI--mPNgO8-fD_XZL1EY1u_G_-CKSfSJegwNliOjTyR-1k3aVasucGOApmzb1YDHDyfDF6akzoIiZQ96_iTs1slIs4JY0kpvrdZ62IugvJbrxn3r0jXcOYU7STTEQHJYIzi3pr0RPuCCAxLyGTXQmhJU1UK0TMupwvxLctSgYL97Q3FF0rdGs-vSvvdOsaqbX2tiq9O8WL16ng6X9b4XfFMdXgEV6D994_LQ">
-<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-<div class="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-3 p-2.5 sm:p-3 rounded-xl bg-black/85 backdrop-blur-md border border-white/10 flex items-center justify-between gap-2">
-<div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
-<span class="material-symbols-outlined text-primary text-base sm:text-xl flex-shrink-0">biotech</span>
-<span class="text-[11px] sm:text-xs font-headline-lg font-bold text-white truncate">Equipamentos Calibrados</span>
-</div>
-<span class="text-[9px] sm:text-[10px] font-mono text-[#00FF9D] font-bold flex-shrink-0">100% Operacional</span>
-</div>
+<!-- END: MainHeader -->
+<main class="flex-grow">
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-8 sm:pt-14 pb-10 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(0,230,168,0.15),transparent)] pointer-events-none"></div>
+<div class="max-w-5xl mx-auto text-center space-y-5 sm:space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon/30 bg-neon/5 text-neon text-[11px] sm:text-xs font-medium uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span> Tecnologia Imobiliária Neon
+      </div>
+<h1 class="text-2xl xs:text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight px-1">
+        Encontre seu <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon via-teal-300 to-sky-400">imóvel ideal</span> com precisão
+      </h1>
+<p class="max-w-2xl mx-auto text-slate-400 text-xs sm:text-base md:text-lg leading-relaxed px-2">
+        Explore casas à venda, aluguéis e áreas de lazer exclusivas com fotos em alta definição, especificações completas de cômodos e contato direto via WhatsApp.
+      </p>
+<div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-4 pt-2 max-w-md sm:max-w-none mx-auto w-full px-4">
+<button class="w-full sm:w-auto px-7 py-3.5 min-h-[48px] rounded-xl bg-neon text-darknavy font-bold hover:bg-neon-hover shadow-neon hover:shadow-neon-lg transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 text-sm sm:text-base" onclick="handleAnnounceClick()">
+<i class="fa-solid fa-bullhorn text-sm"></i> ANUNCIE SEU IMÓVEL
+        </button>
+<a class="w-full sm:w-auto px-6 py-3.5 min-h-[48px] rounded-xl border border-slate-700 bg-cardnavy/60 text-white font-semibold hover:border-neon/60 hover:text-neon transition flex items-center justify-center gap-2 text-sm sm:text-base" href="#vitrine-section">
+<i class="fa-solid fa-layer-group text-sm"></i> Ver Vitrine de Imóveis
+        </a>
 </div>
 </div>
 </section>
-<!-- BANNER DESTACADO PARA AGENDAMENTO INTELIGENTE -->
-<section class="reveal-on-scroll relative overflow-hidden rounded-2xl bg-gradient-to-r from-surface-container-high via-surface-container-low to-surface-container-high border border-[#D4AF37]/40 p-4 sm:p-7 shadow-[0_0_35px_rgba(212,175,55,0.15)] revealed" id="agendamento-section">
-<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none"></div>
-<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-5">
-<div class="flex flex-col gap-1.5 max-w-xl min-w-0">
+<!-- END: HeroSection -->
+<!-- BEGIN: QuickFilters -->
+<section class="max-w-7xl mx-auto px-3 sm:px-6 mb-8" id="filtros-section">
+<div class="bg-cardnavy/80 border border-cyan-900/40 p-2.5 sm:p-3 rounded-2xl flex flex-wrap items-center justify-between gap-2.5 shadow-xl backdrop-blur-sm">
+<span class="text-xs uppercase tracking-wider text-slate-400 font-bold ml-2 hidden sm:inline">
+<i class="fa-solid fa-filter mr-1 text-neon"></i> Filtro Rápido:
+      </span>
+<div class="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
+<button class="filter-btn flex-1 sm:flex-none text-xs font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-neon bg-neon text-darknavy transition shadow-neon min-h-[38px]" id="filter-btn-todos" onclick="filterProperties('todos')">
+          Todos (<span id="count-todos">0</span>)
+        </button>
+<button class="filter-btn flex-1 sm:flex-none text-xs font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-neon/30 text-neon hover:bg-neon/10 transition flex items-center justify-center gap-1.5 min-h-[38px]" id="filter-btn-venda" onclick="filterProperties('venda')">
+<i class="fa-solid fa-tag text-neon"></i> Casas a Venda
+        </button>
+<button class="filter-btn flex-1 sm:flex-none text-xs font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-brandblue/30 text-brandblue hover:bg-brandblue/10 transition flex items-center justify-center gap-1.5 min-h-[38px]" id="filter-btn-aluguel" onclick="filterProperties('aluguel')">
+<i class="fa-solid fa-key text-brandblue"></i> Casas de Aluguel
+        </button>
+<button class="filter-btn flex-1 sm:flex-none text-xs font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-brandyellow/30 text-brandyellow hover:bg-brandyellow/10 transition flex items-center justify-center gap-1.5 min-h-[38px]" id="filter-btn-lazer" onclick="filterProperties('lazer')">
+<i class="fa-solid fa-umbrella-beach text-brandyellow"></i> Área de Lazer
+        </button>
+</div>
+</div>
+</section>
+<!-- END: QuickFilters -->
+<!-- BEGIN: FeaturedProperty -->
+<section class="max-w-7xl mx-auto px-3 sm:px-6 mb-16" id="destaque">
+<div class="hidden relative bg-cardnavy/95 border-2 border-neon rounded-3xl p-4 sm:p-6 md:p-8 shadow-[0_0_30px_-5px_rgba(0,230,168,0.25)] transition duration-300" id="featured-content-card">
+<!-- Badge -->
+<div class="absolute -top-3 left-4 sm:left-8 bg-neon text-darknavy text-xs font-black uppercase px-3.5 py-1 rounded-full shadow-md tracking-wider flex items-center gap-1.5" id="featured-badge">
+<i class="fa-solid fa-bolt"></i> Imóvel em Destaque
+      </div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mt-2">
+<!-- Carousel Area (Col 7) -->
+<div class="lg:col-span-7 flex flex-col gap-3">
+<div class="relative rounded-2xl overflow-hidden bg-black/60 aspect-[16/10] border border-cyan-900/60 group">
+<img alt="Foto em alta definição do imóvel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer" id="featured-main-img" onclick="openLightboxFromFeatured()" src=""/>
+<!-- Zoom Lightbox Button -->
+<button class="absolute top-3 right-3 bg-darknavy/80 hover:bg-neon hover:text-darknavy text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center backdrop-blur transition border border-white/20 shadow-lg" onclick="openLightboxFromFeatured()" title="Zoom em Tela Cheia">
+<i class="fa-solid fa-magnifying-glass-plus text-xs sm:text-sm"></i>
+</button>
+<!-- Carousel Nav Controls -->
+<button class="absolute left-2.5 top-1/2 -translate-y-1/2 bg-darknavy/70 hover:bg-neon hover:text-darknavy text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center backdrop-blur transition" onclick="prevFeaturedImg()">
+<i class="fa-solid fa-chevron-left text-xs sm:text-sm"></i>
+</button>
+<button class="absolute right-2.5 top-1/2 -translate-y-1/2 bg-darknavy/70 hover:bg-neon hover:text-darknavy text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center backdrop-blur transition" onclick="nextFeaturedImg()">
+<i class="fa-solid fa-chevron-right text-xs sm:text-sm"></i>
+</button>
+<div class="absolute bottom-2.5 left-3 bg-black/75 px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-medium text-slate-300">
+<span id="carousel-indicator">Foto 1 de 1</span>
+</div>
+</div>
+<!-- Thumbnail Selector -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1" id="thumb-container"></div>
+</div>
+<!-- Property & Owner Details (Col 5) -->
+<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-5">
+<!-- Owner Info Card -->
+<div class="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-darknavy/80 border border-cyan-900/40">
+<div class="relative flex-shrink-0">
+<img alt="Proprietário" class="w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full object-cover border-2 border-neon ring-2 ring-neon/20" id="featured-owner-photo" src=""/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-neon rounded-full border-2 border-darknavy"></span>
+</div>
+<div class="flex-grow min-w-0">
 <div class="flex items-center gap-2 flex-wrap">
-<span class="px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary text-[10px] font-bold tracking-widest uppercase border border-secondary/30">Agendamento Prioritário</span>
-<span class="text-[10px] text-white/50 font-mono">Sem fila de espera</span>
+<h3 class="text-sm sm:text-base font-bold text-white truncate" id="featured-owner-name">Proprietário</h3>
+<span class="text-[10px] bg-neon/10 text-neon border border-neon/30 px-2 py-0.5 rounded-full font-normal" id="featured-type-tag">Aluguel</span>
 </div>
-<h2 class="font-headline-lg text-base xs:text-lg sm:text-2xl font-bold text-white uppercase tracking-tight break-words">
-          Reserve seu horário com o especialista
-        </h2>
-<p class="text-xs sm:text-sm text-on-surface-variant break-words">
-          Evite esperas desnecessárias. Agende o reparo na loja com data e turno de preferência para atendimento expresso.
-        </p>
+<p class="text-xs text-slate-400 font-mono mt-0.5" id="featured-owner-phone">(00) 00000-0000</p>
+<div class="mt-2">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold transition shadow" href="#" id="featured-whatsapp-btn" rel="noopener noreferrer" target="_blank">
+<i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Direto
+                </a>
 </div>
-<button class="btn-open-modal shimmer-gold flex-shrink-0 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#F2CA50] text-black font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer w-full md:w-auto">
-<span class="material-symbols-outlined text-base">calendar_month</span>
-<span class="">Agendar Horário na loja</span>
-</button>
 </div>
-</section>
-<!-- SEÇÃO BANCADA REAL & FOTOS DO TÉCNICO -->
-<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="bancada">
-<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
-<div class="flex items-center gap-2 min-w-0">
-<span class="material-symbols-outlined text-[#D4AF37] text-[22px] sm:text-[24px] flex-shrink-0">biotech</span>
-<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Bancada Cirúrgica Real</h2>
 </div>
-<span class="text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-[#00FF9D] border border-emerald-500/30 whitespace-nowrap">MONITORAMENTO ATIVO</span>
+<!-- Main Specs & Pricing -->
+<div class="space-y-3.5">
+<h2 class="text-lg sm:text-xl font-extrabold text-white" id="featured-title">Título do Imóvel</h2>
+<div class="flex items-baseline justify-between border-b border-slate-800 pb-3">
+<div>
+<span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400 font-medium" id="featured-price-label">Valor mensal</span>
+<div class="text-2xl sm:text-3xl font-extrabold text-neon" id="featured-price">R$ 0,00</div>
 </div>
-<div class="cyber-card relative rounded-2xl overflow-hidden bg-surface-container-low border border-[#D4AF37]/40 neon-border-gold group">
-<img alt="Bancada técnica real LR TECH FIX com estação de ar quente, microscópio digital e fonte Nice Power" class="w-full h-56 xs:h-72 sm:h-96 object-cover object-center filter contrast-105 group-hover:scale-102 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1P8XI8hDUm40NIeaa2vT73U-nKOl4Ttnok8tM6x5osMjvrdn08NLdiOXmM3aG9tbfErv9rm33I4T56kVV82MDo_v5CdAE2DyH61Wr-JYJoF4vvo1gOP07HLNj7XQ-wIMbqWm2my2Vaa-T3e1z-p4q9UhOh5g2IPkG3PWnOP3vuKvM7qeyEfZvMA2oZFI1s5-R4SyYGr6UZvImuC2nOK0XkGUBE7DZtNTIGmyYQio-qq1go8d2MvlCB-vBuwzu7mmG3A">
-<div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-transparent to-black/50"></div>
-<!-- Hotspot Telemetria Nice-Power -->
-<div class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/85 backdrop-blur-md border border-[#D4AF37]/50 max-w-[85%]">
-<span class="w-1.5 h-1.5 rounded-full bg-[#00FF9D] animate-ping flex-shrink-0"></span>
-<span class="text-[9px] sm:text-xs text-white font-headline-lg font-bold uppercase tracking-wider truncate">Estação de Trabalho Real</span>
+<div class="text-right">
+<span class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-400 font-medium">Área total</span>
+<div class="text-lg sm:text-xl font-bold text-white" id="featured-meters">0 m²</div>
 </div>
-<div class="absolute bottom-2.5 inset-x-2.5 sm:bottom-3 sm:inset-x-6 p-2.5 sm:p-4 rounded-xl bg-[#141418]/90 backdrop-blur-md border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3">
-<div class="flex items-center gap-2.5 min-w-0">
-<span class="material-symbols-outlined text-primary text-[22px] sm:text-[26px] flex-shrink-0">precision_manufacturing</span>
-<div class="flex flex-col min-w-0">
-<span class="font-headline-lg text-xs sm:text-sm font-bold text-white truncate">Fonte Nice-Power &amp; Estação de Solda Ar Quente</span>
-<span class="text-[10px] sm:text-xs text-on-surface-variant truncate">Diagnóstico milimétrico de consumo de miliamperes em placa</span>
 </div>
+<!-- Room Grid -->
+<div class="grid grid-cols-2 gap-2 text-xs sm:text-sm text-slate-300" id="featured-rooms-grid">
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-bed text-neon w-4 text-center"></i>
+<span id="feat-quartos"><strong>0</strong> Quartos</span>
 </div>
-<span class="text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded bg-primary/20 text-primary border border-primary/30 uppercase flex-shrink-0 self-start sm:self-auto">Calibrado Aferido</span>
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-bath text-neon w-4 text-center"></i>
+<span id="feat-banheiros"><strong>0</strong> Banheiros</span>
 </div>
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-utensils text-neon w-4 text-center"></i>
+<span id="feat-cozinha"><strong>0</strong> Cozinha</span>
 </div>
-<p class="text-xs sm:text-sm text-on-surface-variant leading-relaxed break-words">
-      Foto autêntica do laboratório LR TECH FIX. Cada dispositivo é trabalhado sobre manta antiestática térmica com instrumentos profissionais de aferição de corrente e microscopia de alta resolução.
-    </p>
-</section>
-<!-- CATÁLOGO DE SERVIÇOS & ESPECIALIDADES RESPONSIVO -->
-<section class="reveal-on-scroll flex flex-col gap-4 sm:gap-6 scroll-mt-28 revealed" id="servicos">
-<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
-<div class="flex items-center gap-2 min-w-0">
-<span class="material-symbols-outlined text-secondary text-[22px] sm:text-[24px] flex-shrink-0">memory</span>
-<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Especialidades do Laboratório</h2>
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-jug-detergent text-neon w-4 text-center"></i>
+<span id="feat-servico">Área de Serviço</span>
 </div>
-<span class="text-[11px] sm:text-xs text-primary font-headline-lg font-semibold whitespace-nowrap">Técnico Certificado Especialista</span>
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-tree text-neon w-4 text-center"></i>
+<span id="feat-quintal">Quintal</span>
 </div>
-<!-- Grid Adaptativo 1 col mobile / 2 col desktop -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-<!-- Serviço 1: Telas e Displays -->
-<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3.5 sm:gap-4">
-<div class="flex flex-col gap-3">
-<div class="flex items-start justify-between gap-2">
-<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary border border-primary/20 flex-shrink-0">
-<span class="material-symbols-outlined text-[20px] sm:text-[22px]">phone_iphone</span>
+<div class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/60 border border-slate-800">
+<i class="fa-solid fa-car text-neon w-4 text-center"></i>
+<span id="feat-garagem"><strong>0</strong> Vagas</span>
 </div>
-<div class="min-w-0">
-<h3 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase leading-snug break-words">Troca de Telas OLED / IPS</h3>
-<span class="text-[10px] xs:text-[11px] text-secondary truncate block">Biometria, 120Hz e touch 100% testado</span>
-</div>
-</div>
-<span class="text-[9px] font-bold px-2 py-0.5 rounded bg-primary/20 text-primary uppercase flex-shrink-0">Premium</span>
-</div>
-<!-- Thumbnails reais do serviço -->
-<div class="grid grid-cols-2 gap-2 my-1">
-<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
-<img alt="Teste de tela Diamonds Parts One By One Tested na bancada" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW53yu1W6ZzlmUOztAcBnYu0CQVPBjoI4X4iIpBDiRSeMcCg6LA8nodeDzH35uLptbvnbJkeYigYDDhU7CjATg4M_L44c-g0mMcu6Ds_pbwTZK_FIFRjYcicDo49v9g8VhSE-Qqgf6OvB4AqtgdDO4vEgGZQOwiYPnSRblrHEvpO2MSYGY_bmwd_mAHxJSl2QVEMhwt_H4WjEM0kBd5rHbEA5BXyl5phJ7NOflLqMvKbxL5fgUD17GbY3aP0kv8RGz-w">
-<span class="absolute bottom-1 left-1 text-[8px] xs:text-[9px] px-1.5 py-0.5 rounded bg-black/80 text-white font-mono">1 by 1 Tested</span>
-</div>
-<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
-<img alt="Display restaurado novo com cores vivas e touch funcionando" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzqMJmoxRZ6Pe7uux7bQeyZ3mlNH_V2VDk_pRCsbHfph0T-f0LARvuDn380He3AXHrNOeMn9GvjLU55t7mCfa2u-jk32LP1wwJW15jWY_MjwU5njpFddJQLXsm1l-v-H1Mb_VhnWYr6wybNzgDVUbTAMObf8-kQWZ75jgZaXMNf6_zGg0rw_qc06kgsOGlxexmMd0RgLVEtBYa_8RpsTbrWdOzwIwwTTji86LuzBD1HeJX0T6kmLcvyMHAMMOQM9QzZA">
-<span class="absolute bottom-1 left-1 text-[8px] xs:text-[9px] px-1.5 py-0.5 rounded bg-black/80 text-[#00FF9D] font-mono">100% Calibrado</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant leading-relaxed break-words">
-            Linha Platinum com calibração cirúrgica de vidro e touch. Instalação rápida sem manchas, sem toques fantasmas e com encaixe perfeito na carcaça.
-          </p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button class="btn-open-modal flex-1 py-2.5 px-3 rounded-lg bg-surface-container-high border border-[#D4AF37]/40 text-primary font-headline-lg text-xs font-bold text-center uppercase tracking-wider hover:bg-[#D4AF37] hover:text-black transition-all cursor-pointer truncate">
-            Agendar Troca de Tela
-          </button>
-<a class="p-2.5 rounded-lg bg-surface-container-high border border-white/10 text-white hover:text-primary transition-colors flex-shrink-0" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20troca%20de%20tela." rel="noopener noreferrer" target="_blank" title="Falar no WhatsApp">
-<span class="material-symbols-outlined text-base">chat</span>
-</a>
-</div>
-</div>
-<!-- Serviço 2: Reparo em Placa e Solda BGA -->
-<div class="cyber-card cyber-card-cyan p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3.5 sm:gap-4">
-<div class="flex flex-col gap-3">
-<div class="flex items-start justify-between gap-2">
-<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary border border-secondary/20 flex-shrink-0">
-<span class="material-symbols-outlined text-[20px] sm:text-[22px]">developer_board</span>
-</div>
-<div class="min-w-0">
-<h3 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase leading-snug break-words">Reparo em Placa &amp; BGA</h3>
-<span class="text-[10px] xs:text-[11px] text-[#00FF9D] truncate block">Aparelho não liga • Linha em curto</span>
-</div>
-</div>
-<span class="text-[9px] font-bold px-2 py-0.5 rounded bg-secondary/20 text-secondary uppercase flex-shrink-0">Nível 3</span>
-</div>
-<div class="relative rounded-lg overflow-hidden h-28 xs:h-32 bg-black border border-white/10 group/img">
-<img alt="Desmontagem interna e análise de placa e blindagens A15 Bionic" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCum5jk2jKs_IF_18erH09O0EnKQolr0nAgLZc25MBuKXXOcf4RhDNexPlY_ijuvMW-IYL-y_6MvYJNZhcaphpifJ_WnrV1hU8BQx5aqNH6bBRK11dR9Z5_rbDcmTSyGXoz5na0GfCy5kY9oAQQ4iWpDNfs-QFHkQXoxDHnIeG9xPsb2hx8rCyzva9keavPJdDVRXIh64-smnCbPR4RbUkSkywqXqHM2nIhOh38W8obyWd9tanuLg5UYfzgwuloHxU8Mw">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-<div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[9px] sm:text-[10px]">
-<span class="text-white font-mono truncate">Microarquitetura Interna</span>
-<span class="text-primary font-bold flex-shrink-0 ml-1">Diagnóstico Placa</span>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant leading-relaxed break-words">
-            Reconstrução de malhas de alimentação, reparo do circuito de carga (Tristar / Hydra / PMIC) e reballing em processadores e memórias.
-          </p>
-</div>
-<div class="flex items-center gap-2 pt-1">
-<button class="btn-open-modal flex-1 py-2.5 px-3 rounded-lg bg-surface-container-high border border-secondary/40 text-secondary font-headline-lg text-xs font-bold text-center uppercase tracking-wider hover:bg-secondary hover:text-black transition-all cursor-pointer truncate">
-            Agendar Reparo em Placa
-          </button>
-<a class="p-2.5 rounded-lg bg-surface-container-high border border-white/10 text-white hover:text-secondary transition-colors flex-shrink-0" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20meu%20aparelho%20n%C3%A3o%20liga%2C%20preciso%20de%20reparo%20em%20placa." rel="noopener noreferrer" target="_blank" title="Falar no WhatsApp">
-<span class="material-symbols-outlined text-base">chat</span>
-</a>
-</div>
-</div>
-<!-- Serviço 3: Baterias e Conectores de Carga -->
-<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3">
-<div class="flex flex-col gap-2.5">
-<div class="flex items-center justify-between gap-2">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined text-[20px] sm:text-[22px]">battery_charging_full</span>
-</div>
-<div class="min-w-0">
-<h4 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase truncate">Baterias &amp; Carga</h4>
-<p class="text-[10px] xs:text-[11px] text-on-surface-variant truncate">Saúde 100%, ciclo zero e conectores Type-C</p>
-</div>
-</div>
-<span class="text-[9px] px-2 py-0.5 rounded bg-white/10 text-white font-mono flex-shrink-0">100% Saúde</span>
-</div>
-<p class="text-xs text-on-surface-variant leading-relaxed break-words">
-            Troca de bateria com células certificadas que não inflam nem aquecem. Substituição e limpeza de conector com mau contato ou oxidação.
-          </p>
-</div>
-<button class="btn-open-modal w-full py-2.5 px-3 rounded-lg bg-surface-container-high hover:border-primary/40 border border-white/5 text-primary text-xs font-headline-lg uppercase font-bold transition-all cursor-pointer truncate">
-          Agendar Troca de Bateria
-        </button>
-</div>
-<!-- Serviço 4: Desoxidação Ultrassônica Aparelhos Molhados -->
-<div class="cyber-card p-4 sm:p-5 rounded-2xl bg-surface-container-low border border-white/10 flex flex-col justify-between gap-3">
-<div class="flex flex-col gap-2.5">
-<div class="flex items-center justify-between gap-2">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-cyan-400 flex-shrink-0">
-<span class="material-symbols-outlined text-[20px] sm:text-[22px]">water_damage</span>
-</div>
-<div class="min-w-0">
-<h4 class="font-headline-lg text-xs xs:text-sm sm:text-base font-bold text-white uppercase truncate">Banho Ultrassônico</h4>
-<p class="text-[10px] xs:text-[11px] text-cyan-300 truncate">Aparelhos caídos em água ou líquidos</p>
-</div>
-</div>
-<span class="text-[9px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold uppercase flex-shrink-0">Emergência</span>
-</div>
-<p class="text-xs text-on-surface-variant leading-relaxed break-words">
-            Remoção profunda de óxidos sob chips integrados com álcool isopropílico 99.8% em cuba ultrassônica industrial para resgatar placas.
-          </p>
-</div>
-<button class="btn-open-modal w-full py-2.5 px-3 rounded-lg bg-surface-container-high hover:border-cyan-400/40 border border-white/5 text-cyan-300 text-xs font-headline-lg uppercase font-bold transition-all cursor-pointer truncate">
-          Agendar Desoxidação Urgente
-        </button>
-</div>
-</div>
-</section>
-<!-- ANTES & DEPOIS / PORTFÓLIO DE TRABALHO REAL -->
-<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="portfolio">
-<div class="flex items-center justify-between border-b border-white/10 pb-3 flex-wrap gap-2">
-<div class="flex items-center gap-2 min-w-0">
-<span class="material-symbols-outlined text-primary text-[22px] sm:text-[24px] flex-shrink-0">compare</span>
-<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Antes &amp; Depois Real</h2>
-</div>
-<span class="text-[11px] sm:text-xs text-on-surface-variant font-mono whitespace-nowrap">Casos de Sucesso em Bancada</span>
-</div>
-<div class="cyber-card p-4 sm:p-6 rounded-2xl bg-surface-container-low border border-[#D4AF37]/30 flex flex-col gap-4 sm:gap-5">
-<div class="flex items-center justify-between flex-wrap gap-2">
-<div class="flex items-center gap-2 min-w-0">
-<span class="w-2.5 h-2.5 rounded-full bg-[#00FF9D] flex-shrink-0"></span>
-<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg truncate">Recuperação Total de Display Quebrado</span>
-</div>
-<span class="text-[9px] sm:text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF9D] font-mono font-bold whitespace-nowrap">Entregue com Sucesso</span>
-</div>
-<!-- Comparação Visual Responsiva -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-<!-- Antes -->
-<div class="flex flex-col gap-2">
-<div class="relative rounded-xl overflow-hidden h-52 xs:h-64 sm:h-72 bg-black border border-red-500/30 group">
-<img alt="Tela destruída e trincada antes da intervenção" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoRWG_80Bt30F_bCwoj4LmXD9TPpeaa76fIyBJzuOfMskX-MJH9w6Xa48cjVJk1F1UdVoWKXJUfhir5VjiWYjlpfh60ZjIAR00746qMGb0xAJyinlNAlFzpwPy_6mG-2jKXE4QJlVCnW7xpsWvKfuI6DhtHoDc7rUsIVrN8Jd-V6GQT5qvTUWqpNaALi09RIEksNtorS6GqLKXNJXm-5twpnyj0omxeC717B4xiHyYLndp5Uw1Yfj4h2NmEvruVCUKuw">
-<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-red-600/90 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider font-headline-lg shadow">
-              Antes (Trincada)
-            </div>
-</div>
-<span class="text-[11px] sm:text-xs text-center text-red-400 font-medium break-words">Display com vidros estilhaçados e touch inoperante</span>
-</div>
-<!-- Depois -->
-<div class="flex flex-col gap-2">
-<div class="relative rounded-xl overflow-hidden h-52 xs:h-64 sm:h-72 bg-black border border-emerald-500/40 group">
-<img alt="Tela nova instalada com brilho nítido e funcionando perfeitamente" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4iddWEgDWL3pHcN1Os-eTIdzBbrnPrGSCxFzW4cm2dzx09HkMFXYr0Nbimu4yiFa5X-aqNatQEidufZgJMwIiAyoWqcS9CUpwexfPSUWCufIaHQbKVxc9GoZM8GmI3QH3anAeyF_NpLviDeOrTnPqGkI-CxkDij0kUiPOu4hsU80LfwxmS_eHWuTO6lYFHT__zbJfrtMSU_7Hk8MuVeTiWBK8sKYQcUvznl_s65B-aMYnpDg1QZp4hQ5_KyvYBUNHTw">
-<div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded bg-emerald-600/90 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-wider font-headline-lg shadow">
-              Depois (Restaurado)
-            </div>
-</div>
-<span class="text-[11px] sm:text-xs text-center text-[#00FF9D] font-medium break-words">Instalação finalizada, vedado e 100% calibrado</span>
-</div>
-</div>
-<div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-white/5">
-<p class="text-xs sm:text-sm text-on-surface-variant text-center sm:text-left break-words">
-          Aparelho recuperado em menos de 1 hora no laboratório LR TECH FIX mantendo todas as funções originais.
-        </p>
-<button class="btn-open-modal shimmer-gold w-full sm:w-auto flex-shrink-0 py-3 px-5 rounded-xl bg-gradient-to-r from-primary to-[#D4AF37] text-black font-headline-lg text-xs font-bold text-center uppercase tracking-wider shadow hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap">
-          Quero Recuperar Meu Celular Assim
-        </button>
-</div>
-</div>
-</section>
-<!-- METODOLOGIA LABORATORIAL (4 FASES RESPONSIVO) -->
-<section class="reveal-on-scroll flex flex-col gap-3.5 sm:gap-4 scroll-mt-28 revealed" id="metodologia">
-<div class="flex items-center gap-2 border-b border-white/10 pb-3">
-<span class="material-symbols-outlined text-secondary text-[22px] sm:text-[24px]">checklist_rtl</span>
-<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Metodologia em 4 Fases</h2>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
-<div class="flex items-center justify-between">
-<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/20 text-primary font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">01</span>
-<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 1</span>
-</div>
-<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Triagem &amp; Medição</span>
-<span class="text-xs text-on-surface-variant leading-relaxed break-words">Inspeção em fonte digital de bancada para detectar consumo anormal e curtos sem abrir desnecessariamente.</span>
-</div>
-<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
-<div class="flex items-center justify-between">
-<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-secondary/20 text-secondary font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">02</span>
-<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 2</span>
-</div>
-<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Desmontagem Blindada</span>
-<span class="text-xs text-on-surface-variant leading-relaxed break-words">Uso de fita Kapton antiestática, aquecedor térmico calibrado e ferramentas específicas sem marcar a carcaça.</span>
-</div>
-<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
-<div class="flex items-center justify-between">
-<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/20 text-[#00FF9D] font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">03</span>
-<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 3</span>
-</div>
-<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Teste 1 a 1 de Touch</span>
-<span class="text-xs text-on-surface-variant leading-relaxed break-words">Checagem minuciosa de cada ponto da tela, câmeras, sensores de proximidade, alto-falante e microfones.</span>
-</div>
-<div class="cyber-card p-3.5 sm:p-4 rounded-xl bg-surface-container-low border border-white/5 flex flex-col gap-1.5 sm:gap-2">
-<div class="flex items-center justify-between">
-<span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#D4AF37]/20 text-[#D4AF37] font-headline-lg font-bold text-xs sm:text-sm flex items-center justify-center">04</span>
-<span class="text-[9px] uppercase font-mono text-on-surface-variant">Etapa 4</span>
-</div>
-<span class="text-xs sm:text-sm font-bold text-white uppercase font-headline-lg mt-0.5 truncate">Vedação OEM &amp; Laudo</span>
-<span class="text-xs text-on-surface-variant leading-relaxed break-words">Aplicação de adesivos originais de alta resistência, limpeza geral e emissão do termo de garantia de bancada.</span>
-</div>
-</div>
-</section>
-<!-- SELOS DE CONFIANÇA & AUTORIDADE RESPONSIVO -->
-<section class="reveal-on-scroll p-4 sm:p-7 rounded-2xl bg-gradient-to-b from-surface-container-high to-surface-container-low border border-[#D4AF37]/30 shadow-xl flex flex-col gap-4 sm:gap-5 revealed">
+<div class="col-span-2 flex flex-col gap-1 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[#D4AF37] text-[24px] sm:text-[26px]">verified</span>
-<h2 class="font-headline-lg text-base sm:text-xl font-bold text-white uppercase tracking-wider truncate">Autoridade LR TECH FIX</h2>
+<span id="feat-sol-icon"><i class="fa-solid fa-sun text-yellow-400 w-4 text-center"></i></span>
+<span class="font-medium" id="feat-sol">Lado do Sol</span>
 </div>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
-<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-primary truncate">+1.500</span>
-<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Aparelhos Salvos</span>
-<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Taxa de 94.8% em placas</span>
+<span class="text-xs text-slate-300 mt-1 break-words" id="featured-address-badge"><i class="fa-solid fa-location-dot text-neon mr-1"></i> Endereço</span>
+<span class="text-[11px] text-cyan-300/80 hidden" id="featured-ref-badge"><i class="fa-solid fa-compass mr-1"></i> Ponto de ref: <span></span></span>
 </div>
-<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
-<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-secondary truncate">90 a 120d</span>
-<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Garantia Efetiva</span>
-<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Termo em todas peças</span>
 </div>
-<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
-<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-[#00FF9D] truncate">100%</span>
-<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Transparência</span>
-<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Fotos do aparelho aberto</span>
+<!-- Metadata -->
+<div class="text-[10px] sm:text-[11px] text-slate-500 flex items-center justify-between pt-1">
+<span id="featured-published-time"><i class="fa-regular fa-clock mr-1"></i> Publicado recentemente</span>
+<span id="featured-code">Cód: #OPW-0000</span>
 </div>
-<div class="cyber-card p-3 sm:p-4 rounded-xl bg-surface-container-lowest/90 border border-white/10 flex flex-col min-w-0">
-<span class="font-headline-lg text-xl xs:text-2xl sm:text-3xl font-extrabold text-amber-300 truncate">Direto</span>
-<span class="text-[11px] sm:text-sm font-bold text-white uppercase mt-0.5 truncate">Com Especialista</span>
-<span class="text-[9px] sm:text-[10px] text-on-surface-variant mt-1 leading-tight break-words">Sem terceirização</span>
+</div>
+<!-- Action CTA -->
+<a class="w-full py-3 rounded-xl border border-neon/50 text-neon hover:bg-neon hover:text-black font-bold text-xs sm:text-sm tracking-wide transition flex items-center justify-center gap-2" href="#vitrine-section">
+<i class="fa-solid fa-arrows-down-to-line"></i> Explorar Mais Imóveis Publicados
+          </a>
+</div>
+</div>
+</div>
+<!-- Empty Featured State -->
+<div class="rounded-3xl border border-dashed border-cyan-800/60 bg-cardnavy/40 p-6 sm:p-12 text-center" id="featured-empty-card">
+<div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-neon/10 border border-neon/30 text-neon flex items-center justify-center mx-auto mb-4 text-xl sm:text-2xl shadow-neon">
+<i class="fa-solid fa-house-chimney-medical"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-white mb-2">Nenhum imóvel anunciado ainda</h3>
+<p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto mb-6">
+      Cadastre sua primeira propriedade para colocar em destaque com fotos em alta definição, especificações completas e contato direto por WhatsApp!
+    </p>
+<button class="w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-xl bg-neon text-darknavy font-bold text-xs sm:text-sm hover:bg-neon-hover shadow-neon transition inline-flex items-center justify-center gap-2" onclick="handleAnnounceClick()">
+<i class="fa-solid fa-plus"></i> Anunciar Primeiro Imóvel
+    </button>
+</div>
+</section>
+<!-- END: FeaturedProperty -->
+<!-- BEGIN: FeedVitrineSection -->
+<section class="max-w-7xl mx-auto px-3 sm:px-6 mb-20" id="vitrine-section">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+<div>
+<div class="text-xs font-bold uppercase tracking-widest text-neon mb-1">
+<i class="fa-solid fa-fire text-neon mr-1"></i> Vitrine Dinâmica &amp; Feed Completo
+        </div>
+<h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">Todas as Postagens de Imóveis</h2>
+<p class="text-xs sm:text-sm text-slate-400">Navegue com rolagem horizontal contínua ou selecione qualquer publicação para destacar.</p>
+</div>
+<!-- Navigation Controls & Legend -->
+<div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+<div class="flex items-center gap-2.5 text-[11px] sm:text-xs font-semibold bg-cardnavy/90 border border-cyan-900/50 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-neon"></span> Venda</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brandblue"></span> Aluguel</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brandyellow"></span> Lazer</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cardnavy border border-slate-700 hover:border-neon text-white hover:text-neon flex items-center justify-center transition shadow-md" onclick="scrollCarousel(-1)" title="Anterior">
+<i class="fa-solid fa-chevron-left text-xs sm:text-sm"></i>
+</button>
+<button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cardnavy border border-slate-700 hover:border-neon text-white hover:text-neon flex items-center justify-center transition shadow-md" onclick="scrollCarousel(1)" title="Próximo">
+<i class="fa-solid fa-chevron-right text-xs sm:text-sm"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Slider Container with Horizontal Scroll -->
+<div class="relative">
+<div class="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 scroll-smooth no-scrollbar" id="properties-slider">
+<!-- Feed items injected via JS -->
+</div>
+<!-- Scroll progress indicator -->
+<div class="flex items-center justify-between mt-2 text-xs text-slate-500">
+<span id="slider-count-info">Exibindo 0 imóveis</span>
+<div class="flex items-center gap-2">
+<button class="hover:text-neon transition" onclick="scrollCarousel(-1)"><i class="fa-solid fa-arrow-left mr-1"></i> Anterior</button>
+<span>•</span>
+<button class="hover:text-neon transition" onclick="scrollCarousel(1)">Próximo <i class="fa-solid fa-arrow-right ml-1"></i></button>
+</div>
 </div>
 </div>
 </section>
-<!-- RODAPÉ TÉCNICO COMPLETO RESPONSIVO -->
-<footer class="pt-6 pb-14 border-t border-white/10 flex flex-col items-center text-center gap-3 sm:gap-4 px-2">
-<div class="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-center">
-<img alt="LR TECH FIX" class="h-7 sm:h-8 w-auto object-contain opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaHJlr_CllhasY98M0rZxg-cW0NOOuHcV98RPXLbeLYmbOZzd424XwQNPrfKqpEalo1FH92Esfb1aeqEfZQ48qwQBHl2TWTDVeOwbrb1YffNFo_eVY2jT8oAGdiYgyuLekiylyIM8qaXIPGBnNKYjFcAqasK1I4YxU8pfkXDnpk8grK-WQga4HZ9WL9ytSis8N5HS5MAISl3CCBc9DHcqTGP-V8JnpVwRuR2EeYncxligufUX3JFXKkPsE1KuY5GPqRw">
-<span class="font-headline-lg text-xs sm:text-sm font-bold text-white tracking-widest uppercase">LR TECH FIX • ASSISTÊNCIA TÉCNICA</span>
-</div>
-<p class="text-xs text-on-surface-variant max-w-lg leading-relaxed break-words">
-      Laboratório de eletrônica avançada especializado em microsoldagem BGA, substituição de componentes originais e restauração de celulares.<br>
-      Telefone direto: <strong class="text-white font-mono">(84) 99609-3270</strong>
-</p>
-<div class="text-[10px] sm:text-[11px] text-on-surface-variant/60 font-mono">
-      © 2025 LR TECH FIX. Todos os direitos reservados.
-    </div>
-</footer>
+<!-- END: FeedVitrineSection -->
 </main>
-<!-- BOLINHA FLUTUANTE DO WHATSAPP -->
-<a aria-label="Falar no WhatsApp com LR TECH FIX (84) 99609-3270" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#00D95A] text-[#0d0d0f] shadow-[0_0_24px_rgba(0,217,90,0.65)] hover:scale-110 active:scale-95 transition-all duration-300 group" href="https://wa.me/5584996093270?text=Ol%C3%A1%2C%20vi%20seus%20servi%C3%A7os%20estou%20interessado." rel="noopener noreferrer" target="_blank">
-<span class="absolute inset-0 rounded-full bg-[#00FF9D] animate-ping opacity-35 pointer-events-none"></span>
-<span class="absolute -inset-1 rounded-full border border-[#00FF9D]/60 animate-pulse pointer-events-none"></span>
-<svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current relative z-10" viewBox="0 0 24 24">
-<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.13.82.83-3.05-.2-.32a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.21 8.23zm4.51-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"></path>
-</svg>
-</a>
-<!-- MODAL DE AGENDAMENTO RESPONSIVO & ANTI-ZOOM iOS -->
-<!-- ========================================== -->
-<!-- ========================================== -->
-<div aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" id="modal-agendamento" role="dialog">
-<div class="relative w-[96%] max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0f0f13] border border-[#D4AF37]/50 shadow-[0_0_40px_rgba(212,175,55,0.25)] p-4 sm:p-6 flex flex-col gap-3.5 sm:gap-4 transform scale-95 transition-transform duration-300" id="modal-content">
-<!-- Header do Modal -->
-<div class="flex items-start justify-between border-b border-white/10 pb-3 gap-2">
-<div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined text-[20px] sm:text-[24px]">calendar_clock</span>
+<!-- BEGIN: MainFooter -->
+<footer class="bg-darknavy border-t border-cyan-950/80 py-10 px-4 sm:px-6 text-sm text-slate-400" id="suporte">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="space-y-3">
+<div class="text-2xl font-black text-white">Open<span class="text-neon">Word</span></div>
+<p class="text-xs text-slate-500 leading-relaxed">
+        Plataforma de alta precisão para locação, venda e lazer. Experiência fluida para proprietários e locatários com feed em tempo real.
+      </p>
 </div>
-<div class="min-w-0">
-<div class="flex items-center gap-1.5 flex-wrap">
-<h3 class="font-headline-lg text-sm sm:text-base font-bold text-white uppercase tracking-tight truncate">Agendar na Bancada</h3>
-<span class="text-[8px] font-bold px-1.5 py-0.5 rounded bg-secondary/20 text-secondary border border-secondary/30 whitespace-nowrap">ONLINE</span>
+<div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Navegação</h4>
+<ul class="space-y-2 text-xs">
+<li><a class="hover:text-neon transition" href="#destaque">Imóvel Destaque</a></li>
+<li><a class="hover:text-neon transition" href="#vitrine-section">Vitrine de Imóveis</a></li>
+<li><button class="hover:text-neon transition" onclick="handleAnnounceClick()">Anunciar Imóvel</button></li>
+</ul>
 </div>
-<p class="text-[11px] sm:text-xs text-on-surface-variant truncate">Atendimento exclusivo com técnico</p>
+<div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Suporte &amp; Contato</h4>
+<ul class="space-y-2 text-xs">
+<li><i class="fa-solid fa-phone text-neon mr-1"></i> (84) 98680-2229</li>
+<li><i class="fa-solid fa-envelope text-neon mr-1"></i> contato@openword.com.br</li>
+<li><i class="fa-solid fa-location-dot text-neon mr-1"></i> Natal / RN - Brasil</li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Segurança &amp; Dados</h4>
+<p class="text-xs text-slate-500">
+        Integração oficial de busca automática de logradouro via ViaCEP. Transparência e contato instantâneo verificado.
+      </p>
 </div>
 </div>
-<!-- Botão Fechar -->
-<button aria-label="Fechar Modal" class="text-on-surface-variant hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors flex-shrink-0" id="btn-close-modal">
-<span class="material-symbols-outlined text-2xl">close</span>
+<div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-slate-900 text-center text-xs text-slate-600">
+    © 2025 OpenWord Inc. Todos os direitos reservados. Tema Dark Neon.
+  </div>
+</footer>
+<!-- END: MainFooter -->
+<!-- BEGIN: AuthModal (Cadastro e Login Direto) -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto" id="auth-modal">
+<div class="bg-cardnavy border border-neon/40 rounded-3xl w-full max-w-md shadow-2xl p-5 sm:p-8 relative my-auto max-h-[92vh] overflow-y-auto">
+<button class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center transition" onclick="closeAuthModal()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div class="text-center mb-5">
+<div class="w-12 h-12 rounded-2xl bg-neon/10 border border-neon text-neon flex items-center justify-center mx-auto mb-3 text-xl shadow-neon">
+<i class="fa-solid fa-user-lock"></i>
+</div>
+<h3 class="text-xl sm:text-2xl font-black text-white" id="auth-modal-title">Acesse ou Crie sua Conta</h3>
+<p class="text-xs text-slate-400 mt-1" id="auth-modal-subtitle">Cadastre-se rapidamente para publicar imóveis na plataforma</p>
+</div>
+<!-- Alert / Prompt Notice if gate triggered -->
+<div class="hidden mb-4 p-3 rounded-xl bg-neon/10 border border-neon/30 text-neon text-xs flex items-center gap-2.5" id="auth-gate-notice">
+<i class="fa-solid fa-circle-exclamation text-base flex-shrink-0"></i>
+<span>Faça login ou crie sua conta para anunciar seu imóvel!</span>
+</div>
+<form class="space-y-3.5" id="auth-form" onsubmit="handleAuthSubmit(event)">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Seu nome completo <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon placeholder:text-slate-500" id="auth-name" placeholder="Ex: Maria Fernandes" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Seu Gmail / E-mail <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon placeholder:text-slate-500" id="auth-email" placeholder="Ex: seuemail@gmail.com" required="" type="email"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Seu WhatsApp <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon placeholder:text-slate-500" id="auth-phone" placeholder="(84) 98680-2229" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Seu CPF (opcional)</label>
+<input class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon placeholder:text-slate-500" id="auth-cpf" placeholder="000.000.000-00" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Foto de Perfil (Opcional)</label>
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full border border-neon overflow-hidden bg-slate-800 flex items-center justify-center flex-shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover hidden" id="auth-avatar-preview" src=""/>
+<i class="fa-solid fa-camera text-slate-500 text-sm" id="auth-avatar-placeholder"></i>
+</div>
+<div class="flex-grow">
+<input class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-neon mb-1 placeholder:text-slate-500" id="auth-photo-url" oninput="previewAuthAvatar(this.value)" placeholder="Cole URL da foto ou selecione" type="text"/>
+<input accept="image/*" class="w-full text-[11px] text-slate-400 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-neon hover:file:bg-slate-700" id="auth-photo-file" onchange="previewAuthAvatarFile(this)" type="file"/>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 min-h-[46px] rounded-xl bg-neon text-darknavy font-black text-xs uppercase tracking-wider hover:bg-neon-hover shadow-neon hover:shadow-neon-lg transition flex items-center justify-center gap-2" type="submit">
+<i class="fa-solid fa-arrow-right-to-bracket"></i> CRIAR / ACESSAR CONTA
+        </button>
+</div>
+<p class="text-[11px] text-center text-slate-500">Sem códigos ou burocracia. Acesso direto e seguro.</p>
+</form>
+</div>
+</div>
+<!-- END: AuthModal -->
+<!-- BEGIN: ProfileModal (Visualização da Conta Logada) -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto" id="profile-modal">
+<div class="bg-cardnavy border border-neon/40 rounded-3xl w-full max-w-md shadow-2xl p-6 relative my-auto">
+<button class="absolute top-5 right-5 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center transition" onclick="closeProfileModal()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div class="text-center space-y-4 pt-2">
+<div class="w-20 h-20 rounded-full border-2 border-neon p-0.5 mx-auto overflow-hidden relative">
+<img alt="Foto do Usuário" class="w-full h-full rounded-full object-cover" id="profile-modal-img" src=""/>
+<div class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-neon text-xl font-bold hidden" id="profile-modal-fallback">OW</div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white" id="profile-modal-name">Nome do Usuário</h3>
+<p class="text-xs text-neon font-mono" id="profile-modal-phone">(00) 00000-0000</p>
+<p class="text-xs text-slate-400 mt-1" id="profile-modal-email">usuario@openword.com</p>
+</div>
+<div class="bg-slate-900/70 rounded-2xl p-3 border border-slate-800 text-left text-xs space-y-2">
+<div class="flex justify-between text-slate-300">
+<span>Minhas Publicações:</span>
+<span class="font-bold text-neon" id="profile-modal-count">0</span>
+</div>
+<div class="flex justify-between text-slate-300">
+<span>Status da Conta:</span>
+<span class="font-bold text-emerald-400">Verificada &amp; Ativa</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2.5 rounded-xl bg-neon text-darknavy font-bold text-xs hover:bg-neon-hover shadow-neon transition flex items-center justify-center gap-1.5" onclick="closeProfileModal(); openModal();">
+<i class="fa-solid fa-plus"></i> Novo Imóvel
+        </button>
+<button class="px-4 py-2.5 rounded-xl border border-red-500/40 text-red-400 hover:bg-red-500/10 font-bold text-xs transition" onclick="logoutUser(); closeProfileModal();">
+          Sair
+        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: ProfileModal -->
+<!-- BEGIN: AnnouncementMultiStepModal -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto" id="announce-modal">
+<div class="bg-cardnavy border border-neon/40 rounded-3xl w-full max-w-2xl max-h-[94vh] overflow-y-auto shadow-2xl p-4 sm:p-7 relative my-auto">
+<!-- Close Button -->
+<button class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-800/50 flex items-center justify-center transition" onclick="closeModal()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div class="mb-5 sm:mb-6 pr-8">
+<div class="flex items-center justify-between mb-2 sm:mb-3">
+<h3 class="text-lg sm:text-2xl font-black text-white">Anunciar Novo Imóvel</h3>
+<span class="text-[11px] sm:text-xs font-bold text-neon bg-neon/10 border border-neon/30 px-2.5 py-0.5 sm:py-1 rounded-full" id="step-badge">Etapa 1 de 3</span>
+</div>
+<!-- Multi-step progress bar -->
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-neon h-full transition-all duration-300" id="step-progress-bar" style="width: 33.3%;"></div>
+</div>
+</div>
+<form id="property-form" onsubmit="handleFormSubmit(event)">
+<!-- ETAPA 1: Localização & Dados Básicos -->
+<div class="space-y-3.5 sm:space-y-4" id="form-step-1">
+<div class="text-xs font-bold uppercase tracking-wider text-neon border-b border-cyan-900/60 pb-1">
+          Etapa 1: Endereço &amp; Título do Imóvel
+        </div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Título do Anúncio <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-title" placeholder="Ex: Casa Contemporânea com Piscina" required="" type="text"/>
+</div>
+<!-- CEP, Rua e Número -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+<div class="md:col-span-4">
+<label class="block text-xs font-semibold text-slate-300 mb-1">CEP (Busca ViaCEP) <span class="text-neon">*</span></label>
+<div class="relative">
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-cep" maxlength="9" onblur="fetchAddressByCEP()" placeholder="Ex: 59000-000" type="text"/>
+<span class="hidden absolute right-3 top-3 text-neon text-xs" id="cep-loader"><i class="fa-solid fa-spinner fa-spin"></i></span>
+</div>
+</div>
+<div class="md:col-span-5">
+<label class="block text-xs font-semibold text-slate-300 mb-1">Rua / Bairro / Cidade <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-address" placeholder="Ex: Rua das Dunas, Tirol - Natal/RN" required="" type="text"/>
+</div>
+<div class="md:col-span-3">
+<label class="block text-xs font-semibold text-slate-300 mb-1">Número da Casa <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-number" placeholder="Ex: 142 ou S/N" required="" type="text"/>
+</div>
+</div>
+<!-- Ponto de Referência -->
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Ponto de Referência</label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-reference" placeholder="Ex: Próximo à padaria central, em frente à praça" type="text"/>
+</div>
+<!-- Connected User Preview banner -->
+<div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 flex items-center justify-between text-xs">
+<div class="flex items-center gap-2.5">
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-neon object-cover" id="form-user-preview-avatar" src=""/>
+<div class="truncate max-w-[180px] sm:max-w-none">
+<p class="font-bold text-white truncate" id="form-user-preview-name">Logado</p>
+<p class="text-[11px] text-slate-400 font-mono" id="form-user-preview-phone">WhatsApp</p>
+</div>
+</div>
+<span class="text-[10px] text-neon bg-neon/10 border border-neon/30 px-2 py-0.5 rounded-full shrink-0">Conta Vinculada</span>
+</div>
+<div class="pt-4 flex items-center justify-end">
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-neon text-darknavy font-bold text-xs hover:bg-neon-hover shadow-neon transition flex items-center justify-center gap-2" onclick="goToStep(2)" type="button">
+            Avançar para Valores &amp; Cômodos <i class="fa-solid fa-arrow-right"></i>
 </button>
 </div>
-<!-- Formulário de Agendamento com Inputs text-base (16px) no mobile para evitar zoom indevido -->
-<form class="flex flex-col gap-3 sm:gap-3.5" id="form-agendamento" onsubmit="return false;">
-<!-- Grid Nome e WhatsApp -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-nome">
-            1. Seu Nome Completo <span class="text-primary">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-nome" placeholder="Ex: Carlos Eduardo" required="" type="text">
 </div>
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-whatsapp">
-            2. WhatsApp / Telefone <span class="text-primary">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-whatsapp" placeholder="(84) 9____-____" required="" type="tel">
+<!-- ETAPA 2: Finalidade, Valor e Especificações dos Cômodos -->
+<div class="space-y-3.5 sm:space-y-4 hidden" id="form-step-2">
+<div class="text-xs font-bold uppercase tracking-wider text-neon border-b border-cyan-900/60 pb-1">
+          Etapa 2: Preço &amp; Detalhes dos Cômodos
+        </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Finalidade <span class="text-neon">*</span></label>
+<select class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-type" onchange="updatePriceLabelByType()" required="">
+<option value="aluguel">Aluguel (Azul)</option>
+<option value="venda">Venda (Verde Neon)</option>
+<option value="lazer">Área de Lazer (Amarelo)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Moeda Mundial <span class="text-neon">*</span></label>
+<select class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon" id="prop-currency" onchange="formatCurrencyInputLive()">
+<option data-symbol="R$" selected="" value="BRL">BRL R$ - Real Brasileiro</option>
+<option data-symbol="$" value="USD">USD $ - Dólar Americano</option>
+<option data-symbol="€" value="EUR">EUR € - Euro</option>
+<option data-symbol="£" value="GBP">GBP £ - Libra Esterlina</option>
+<option data-symbol="¥" value="JPY">JPY ¥ - Iene Japonês</option>
+<option data-symbol="CAD $" value="CAD">CAD $ - Dólar Canadense</option>
+<option data-symbol="AUD $" value="AUD">AUD $ - Dólar Australiano</option>
+<option data-symbol="CHF" value="CHF">CHF Fr - Franco Suíço</option>
+<option data-symbol="ARS $" value="ARS">ARS $ - Peso Argentino</option>
+<option data-symbol="CLP $" value="CLP">CLP $ - Peso Chileno</option>
+<option data-symbol="UYU $" value="UYU">UYU $ - Peso Uruguaio</option>
+<option data-symbol="MXN $" value="MXN">MXN $ - Peso Mexicano</option>
+<option data-symbol="CN¥" value="CNY">CNY ¥ - Yuan Chinês</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1" id="form-price-label">Valor Mensal <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-neon font-mono" id="prop-price" oninput="handlePriceMask(this)" placeholder="0,00" required="" type="text"/>
 </div>
 </div>
-<!-- Aparelho Modelo -->
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-modelo">
-          3. Marca &amp; Modelo do Aparelho <span class="text-primary">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none" id="agenda-modelo" placeholder="Ex: iPhone 13 Pro, Samsung S23, Xiaomi..." required="" type="text">
+<!-- Área e Cômodos -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Área (m²) <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-meters" min="1" placeholder="Ex: 150" required="" type="number"/>
 </div>
-<!-- Tipo de Serviço (Chips Responsivos) -->
-<div class="flex flex-col gap-1.5">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90">
-          4. Tipo de Serviço Desejado <span class="text-primary">*</span>
-</label>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2" id="servicos-chips">
-<button class="service-chip py-2 px-2 rounded-lg border border-[#D4AF37] bg-[#D4AF37]/20 text-white text-[11px] font-bold text-left transition-all cursor-pointer truncate" data-service="Troca de Tela / Display OLED" type="button">
-            📱 Troca de Tela
-          </button>
-<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Reparo em Placa Lógica / Solda BGA" type="button">
-            ⚡ Reparo Placa
-          </button>
-<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Troca de Bateria 100% Saúde" type="button">
-            🔋 Bateria Nova
-          </button>
-<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Banho Químico / Aparelho Molhado" type="button">
-            💧 Desoxidação
-          </button>
-<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Conector de Carga / Microfone" type="button">
-            🔌 Conector Carga
-          </button>
-<button class="service-chip py-2 px-2 rounded-lg border border-white/10 bg-surface-container-high text-on-surface-variant text-[11px] text-left hover:border-white/30 transition-all cursor-pointer truncate" data-service="Outro Serviço" type="button">
-            ⚙️ Outro
-          </button>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Quartos <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-rooms" max="20" min="0" placeholder="Ex: 3" required="" type="number"/>
 </div>
-<input id="selected-service-value" type="hidden" value="Troca de Tela / Display OLED">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Banheiros <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-baths" max="20" min="0" placeholder="Ex: 2" required="" type="number"/>
 </div>
-<!-- Descrição do Ocorrido -->
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-defeito">
-          5. O que aconteceu com o aparelho?
-        </label>
-<textarea class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-primary focus:ring-0 outline-none resize-none" id="agenda-defeito" placeholder="Ex: Caiu no chão e tela apagou, não carrega..." rows="2"></textarea>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Cozinhas <span class="text-neon">*</span></label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-kitchens" max="10" min="0" placeholder="Ex: 1" required="" type="number"/>
 </div>
-<!-- Data e Horário -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-data">
-            6. Data Desejada <span class="text-primary">*</span>
-</label>
-<input class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white focus:border-primary focus:ring-0 outline-none" id="agenda-data" required="" type="date">
 </div>
-<div class="flex flex-col gap-1">
-<label class="text-[11px] sm:text-xs font-headline-lg font-bold uppercase text-white/90" for="agenda-turno">
-            7. Turno / Horário
-          </label>
-<select class="w-full bg-surface-container-lowest border border-white/15 rounded-xl px-3 py-2 text-sm text-white focus:border-primary focus:ring-0 outline-none" id="agenda-turno">
-<option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
-<option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
-<option value="Primeiro Horário Disponível">Primeiro Horário Livre</option>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Vagas de Garagem</label>
+<input class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-garage" min="0" placeholder="Ex: 2" type="number"/>
+</div>
+<!-- POSIÇÃO SOLAR: APENAS 2 OPÇÕES -->
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Posição Solar <span class="text-neon">*</span></label>
+<div class="grid grid-cols-2 gap-2">
+<button class="sun-choice-btn py-2 px-2 rounded-xl border border-neon bg-neon/15 text-neon text-xs font-bold flex items-center justify-center gap-1.5 transition" id="sun-btn-sol" onclick="selectSunPosition('Lado do Sol')" type="button">
+<i class="fa-solid fa-sun text-yellow-400"></i> Lado do Sol
+            </button>
+<button class="sun-choice-btn py-2 px-2 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-400 text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-slate-500 transition" id="sun-btn-sombra" onclick="selectSunPosition('Lado da Sombra')" type="button">
+<i class="fa-solid fa-cloud-sun text-cyan-300"></i> Lado da Sombra
+            </button>
+</div>
+<input id="prop-sun" type="hidden" value="Lado do Sol"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Área Externa</label>
+<select class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-neon" id="prop-yard">
+<option value="Quintal Amplo">Quintal Amplo</option>
+<option value="Varanda Gourmet">Varanda Gourmet</option>
+<option value="Terraço Panorâmico">Terraço Panorâmico</option>
+<option value="Sem quintal">Sem quintal</option>
 </select>
 </div>
 </div>
-<!-- Erro Feedback -->
-<div class="hidden text-xs text-red-400 font-bold bg-red-950/40 p-2.5 rounded-lg border border-red-500/30" id="agenda-error-msg">
-        Por favor preencha seu nome e o modelo do aparelho.
-      </div>
-<!-- Botão Submit Agendamento -->
-<button class="shimmer-gold w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F2CA50] to-[#e6bd35] text-[#1b1400] font-headline-lg font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-1" id="btn-submit-agendamento" type="button">
-<span class="">Confirmar Agendamento no WhatsApp ➔</span>
+<div class="pt-4 flex items-center justify-between gap-3">
+<button class="px-4 py-2.5 rounded-xl border border-slate-700 text-slate-300 text-xs font-semibold hover:bg-slate-800 transition" onclick="goToStep(1)" type="button">
+<i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+          </button>
+<button class="px-6 py-2.5 rounded-xl bg-neon text-darknavy font-bold text-xs hover:bg-neon-hover shadow-neon transition flex items-center gap-2" onclick="goToStep(3)" type="button">
+            Avançar para Fotos <i class="fa-solid fa-arrow-right"></i>
 </button>
-<div class="text-[10px] text-center text-on-surface-variant flex items-center justify-center gap-1">
-<span class="material-symbols-outlined text-[13px] text-[#00FF9D]">lock</span>
-<span class="">Dados enviados com segurança diretamente ao técnico.</span>
+</div>
+</div>
+<!-- ETAPA 3: Upload de Múltiplas Fotos e Confirmação -->
+<div class="space-y-3.5 sm:space-y-4 hidden" id="form-step-3">
+<div class="text-xs font-bold uppercase tracking-wider text-neon border-b border-cyan-900/60 pb-1">
+          Etapa 3: Upload de Múltiplas Fotos &amp; Confirmação
+        </div>
+<div>
+<label class="block text-xs font-semibold text-slate-300 mb-1">Adicionar Fotos do Imóvel (Múltiplas Fotos Permitidas) <span class="text-neon">*</span></label>
+<div class="flex items-center gap-2 mb-2">
+<input class="flex-grow bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-neon" id="prop-image-url" placeholder="Ou cole URL da foto (https://...)" type="text"/>
+<button class="px-3 py-2 bg-slate-800 hover:bg-neon hover:text-black text-neon rounded-xl border border-neon/40 text-xs font-bold transition flex items-center gap-1 shrink-0" onclick="addPhotoFromUrl()" type="button">
+<i class="fa-solid fa-plus"></i> <span class="hidden xs:inline">Inserir</span> URL
+            </button>
+</div>
+<div class="border-2 border-dashed border-cyan-800/80 hover:border-neon rounded-2xl p-4 text-center bg-slate-900/50 transition">
+<input accept="image/*" class="hidden" id="house-photos" multiple="" onchange="handleMultiplePhotoUpload(this)" type="file"/>
+<label class="cursor-pointer flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-neon" for="house-photos">
+<i class="fa-solid fa-cloud-arrow-up text-2xl text-neon"></i>
+<span class="text-xs font-semibold text-white">Clique para selecionar várias fotos de uma vez</span>
+<span class="text-[11px] text-slate-500">Formatos aceitos: JPG, PNG, WEBP. Selecione múltiplas imagens.</span>
+</label>
+</div>
+</div>
+<!-- Gallery Preview Grid -->
+<div>
+<div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+<span>Fotos Selecionadas: <strong class="text-neon" id="photos-count-label">0</strong></span>
+<button class="text-xs text-red-400 hover:text-red-300 hidden" id="clear-all-photos-btn" onclick="clearAllUploadedPhotos()" type="button">Limpar todas</button>
+</div>
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5 min-h-[90px] p-2.5 rounded-2xl bg-slate-900/70 border border-slate-800 max-h-48 overflow-y-auto" id="photo-preview-grid">
+<div class="col-span-full py-6 text-center text-slate-600 text-xs flex flex-col items-center justify-center" id="empty-photos-notice">
+<i class="fa-regular fa-images text-2xl mb-1 text-slate-700"></i>
+<span>Nenhuma foto carregada ainda. Carregue pelo menos uma foto.</span>
+</div>
+</div>
+</div>
+<div class="p-3 bg-slate-900/50 rounded-xl border border-slate-800 text-xs text-slate-400">
+<p><i class="fa-solid fa-check text-neon mr-1"></i> O proprietário (nome, WhatsApp direto e foto) será associado automaticamente à sua conta ativa.</p>
+</div>
+<div class="pt-4 flex items-center justify-between gap-3">
+<button class="px-4 py-2.5 rounded-xl border border-slate-700 text-slate-300 text-xs font-semibold hover:bg-slate-800 transition" onclick="goToStep(2)" type="button">
+<i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+          </button>
+<button class="w-full sm:w-auto px-7 py-3 rounded-xl bg-neon text-darknavy font-black text-xs hover:bg-neon-hover shadow-neon transition flex items-center justify-center gap-2" type="submit">
+<i class="fa-solid fa-paper-plane"></i> Publicar &amp; Atualizar Vitrine
+          </button>
+</div>
 </div>
 </form>
 </div>
 </div>
-<!-- SCRIPTS INTERATIVOS & CONTROLE MODAL -->
-<!-- ========================================== -->
-<!-- ========================================== -->
-<script>
-  // Configurar data de amanhã como padrão
-  (function setInitialDate() {
-    const dataInput = document.getElementById('agenda-data');
-    if (dataInput) {
-      const today = new Date();
-      today.setDate(today.getDate() + 1);
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, '0');
-      const dd = String(today.getDate()).padStart(2, '0');
-      dataInput.value = `${yyyy}-${mm}-${dd}`;
-      dataInput.min = new Date().toISOString().split('T')[0];
+<!-- END: AnnouncementMultiStepModal -->
+<!-- BEGIN: LightboxModal -->
+<div class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-md" id="lightbox-modal">
+<button class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-neon text-2xl sm:text-3xl transition z-10" onclick="closeLightbox()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div class="max-w-5xl max-h-[85vh] flex flex-col items-center justify-center">
+<img alt="Ampliação do Imóvel" class="max-h-[75vh] sm:max-h-[80vh] max-w-full rounded-2xl object-contain border border-neon/50 shadow-neon-lg" id="lightbox-img" src=""/>
+<p class="text-slate-300 text-xs mt-3 tracking-wide text-center" id="lightbox-caption">Foto em Alta Definição</p>
+</div>
+</div>
+<!-- END: LightboxModal -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="properties-data-and-state">
+  // User Authentication State: STARTS LOGGED OUT AS REQUESTED
+  let currentUser = {
+    isLoggedIn: false,
+    name: '',
+    email: '',
+    phone: '',
+    cpf: '',
+    avatar: ''
+  };
+
+  // Property dataset starts clean (NO FAKE / PRESET PROPERTIES)
+  let propertyList = [];
+  let currentFeatured = null;
+  let featuredPhotoIndex = 0;
+  let activeFilter = 'todos';
+  let uploadedPhotos = [];
+
+  const typeConfig = {
+    venda: { color: '#00e6a8', bg: 'rgba(0, 230, 168, 0.15)', border: '#00e6a8', text: '#00e6a8', label: 'Venda' },
+    aluguel: { color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.15)', border: '#38bdf8', text: '#38bdf8', label: 'Aluguel' },
+    lazer: { color: '#eab308', bg: 'rgba(234, 179, 8, 0.15)', border: '#eab308', text: '#eab308', label: 'Área de Lazer' }
+  };
+
+  // Mobile Nav Drawer Toggle
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobile-nav');
+    const icon = document.getElementById('mobile-menu-icon');
+    if (nav.classList.contains('hidden')) {
+      nav.classList.remove('hidden');
+      icon.className = 'fa-solid fa-xmark text-sm';
+    } else {
+      nav.classList.add('hidden');
+      icon.className = 'fa-solid fa-bars text-sm';
     }
-  })();
+  }
 
-  // IntersectionObserver para Fade-In Suave
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: "0px 0px -30px 0px"
-    });
+  // Toast Functionality
+  function showToast(title, message, icon = 'fa-bell') {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-title').textContent = title;
+    document.getElementById('toast-message').textContent = message;
+    document.getElementById('toast-icon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
+    toast.classList.remove('translate-x-[120%]');
+    setTimeout(() => {
+      toast.classList.add('translate-x-[120%]');
+    }, 4000);
+  }
 
-    reveals.forEach(el => observer.observe(el));
+  // Auth UI Rendering
+  function updateAuthUI() {
+    const defaultIcon = document.getElementById('account-default-icon');
+    const headerImg = document.getElementById('account-header-img');
+    const btnLabel = document.getElementById('account-btn-label');
+    const chevron = document.getElementById('account-chevron');
+    const dropdownUserName = document.getElementById('dropdown-user-name');
+    const dropdownUserEmail = document.getElementById('dropdown-user-email');
+
+    if (currentUser.isLoggedIn) {
+      if (currentUser.avatar) {
+        headerImg.src = currentUser.avatar;
+        headerImg.classList.remove('hidden');
+        defaultIcon.classList.add('hidden');
+      } else {
+        const initials = currentUser.name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        defaultIcon.className = 'text-xs font-bold text-neon';
+        defaultIcon.textContent = initials || 'US';
+        defaultIcon.classList.remove('hidden');
+        headerImg.classList.add('hidden');
+      }
+      btnLabel.textContent = currentUser.name.split(' ')[0].toUpperCase();
+      chevron.classList.remove('hidden');
+      dropdownUserName.textContent = currentUser.name;
+      dropdownUserEmail.textContent = currentUser.email || 'Conta OpenWord';
+    } else {
+      headerImg.classList.add('hidden');
+      defaultIcon.className = 'fa-regular fa-user';
+      defaultIcon.textContent = '';
+      defaultIcon.classList.remove('hidden');
+      btnLabel.textContent = 'CONTA';
+      chevron.classList.add('hidden');
+      document.getElementById('account-dropdown').classList.add('hidden');
+    }
+  }
+
+  function handleAccountButtonClick() {
+    if (currentUser.isLoggedIn) {
+      toggleDropdown();
+    } else {
+      openAuthModal(false);
+    }
+  }
+
+  function toggleDropdown() {
+    const dd = document.getElementById('account-dropdown');
+    dd.classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', (e) => {
+    const accountBtn = document.getElementById('account-btn');
+    const dropdown = document.getElementById('account-dropdown');
+    if (accountBtn && dropdown && !accountBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
   });
 
-  // CONTROLE DO MODAL DE AGENDAMENTO
-  const modal = document.getElementById('modal-agendamento');
-  const modalContent = document.getElementById('modal-content');
-  const openModalBtns = document.querySelectorAll('.btn-open-modal');
-  const closeModalBtn = document.getElementById('btn-close-modal');
+  // Auth Gate
+  function handleAnnounceClick() {
+    if (!currentUser.isLoggedIn) {
+      showToast('Acesso Restrito', 'Faça login ou crie sua conta para anunciar seu imóvel!', 'fa-lock');
+      openAuthModal(true);
+      return;
+    }
+    openModal();
+  }
+
+  function openAuthModal(gateTriggered = false) {
+    const modal = document.getElementById('auth-modal');
+    const notice = document.getElementById('auth-gate-notice');
+    if (gateTriggered) {
+      notice.classList.remove('hidden');
+    } else {
+      notice.classList.add('hidden');
+    }
+    modal.classList.remove('hidden');
+  }
+
+  function closeAuthModal() {
+    document.getElementById('auth-modal').classList.add('hidden');
+  }
+
+  function previewAuthAvatar(url) {
+    const preview = document.getElementById('auth-avatar-preview');
+    const placeholder = document.getElementById('auth-avatar-placeholder');
+    if (url && (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:image'))) {
+      preview.src = url;
+      preview.classList.remove('hidden');
+      placeholder.classList.add('hidden');
+    }
+  }
+
+  function previewAuthAvatarFile(input) {
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('auth-avatar-preview');
+        const placeholder = document.getElementById('auth-avatar-placeholder');
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function handleAuthSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('auth-name').value.trim();
+    const email = document.getElementById('auth-email').value.trim();
+    const phone = document.getElementById('auth-phone').value.trim();
+    const cpf = document.getElementById('auth-cpf').value.trim();
+
+    const avatarUrl = document.getElementById('auth-photo-url').value.trim();
+    const preview = document.getElementById('auth-avatar-preview');
+    const previewSrc = preview.classList.contains('hidden') ? '' : preview.src;
+    const finalAvatar = avatarUrl || previewSrc;
+
+    currentUser = {
+      isLoggedIn: true,
+      name,
+      email,
+      phone,
+      cpf,
+      avatar: finalAvatar
+    };
+
+    updateAuthUI();
+    const shouldOpenAnnounce = !document.getElementById('auth-gate-notice').classList.contains('hidden');
+    closeAuthModal();
+    showToast('Sucesso', `Bem-vindo(a), ${name.split(' ')[0]}! Sua conta está conectada.`, 'fa-circle-check');
+
+    if (shouldOpenAnnounce) {
+      openModal();
+    }
+  }
+
+  function logoutUser() {
+    currentUser = {
+      isLoggedIn: false,
+      name: '',
+      email: '',
+      phone: '',
+      cpf: '',
+      avatar: ''
+    };
+    // Limpa campos do modal de login
+    const authForm = document.getElementById('auth-form');
+    if (authForm) authForm.reset();
+    document.getElementById('auth-avatar-preview').classList.add('hidden');
+    document.getElementById('auth-avatar-placeholder').classList.remove('hidden');
+
+    updateAuthUI();
+    showToast('Desconectado', 'Você saiu da sua conta.', 'fa-arrow-right-from-bracket');
+  }
+
+  function openProfileDetails() {
+    if (!currentUser.isLoggedIn) return;
+    document.getElementById('profile-modal-name').textContent = currentUser.name;
+    document.getElementById('profile-modal-email').textContent = currentUser.email;
+    document.getElementById('profile-modal-phone').textContent = currentUser.phone;
+    
+    const profileImg = document.getElementById('profile-modal-img');
+    const profileFallback = document.getElementById('profile-modal-fallback');
+    if (currentUser.avatar) {
+      profileImg.src = currentUser.avatar;
+      profileImg.classList.remove('hidden');
+      profileFallback.classList.add('hidden');
+    } else {
+      profileImg.classList.add('hidden');
+      profileFallback.classList.remove('hidden');
+      const inits = currentUser.name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      profileFallback.textContent = inits || 'OW';
+    }
+    const myPropsCount = propertyList.filter(p => p.ownerName === currentUser.name || p.ownerPhone === currentUser.phone).length;
+    document.getElementById('profile-modal-count').textContent = myPropsCount;
+    document.getElementById('profile-modal').classList.remove('hidden');
+  }
+
+  function closeProfileModal() {
+    document.getElementById('profile-modal').classList.add('hidden');
+  }
+
+  function filterMyProperties() {
+    const myProps = propertyList.filter(p => p.ownerName === currentUser.name || p.ownerPhone === currentUser.phone);
+    if (myProps.length === 0) {
+      showToast('Minhas Publicações', 'Você ainda não possui nenhum imóvel publicado.', 'fa-info-circle');
+    } else {
+      setAsFeatured(myProps[0].id);
+      showToast('Minhas Publicações', `Mostrando suas publicações (${myProps.length} imóvel).`, 'fa-house');
+    }
+  }
+
+  // CURRENCY MASK IN REAL TIME
+  function handlePriceMask(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (!value) {
+      input.value = '';
+      return;
+    }
+    let numberVal = parseFloat(value) / 100;
+    input.value = numberVal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function formatCurrencyInputLive() {
+    const input = document.getElementById('prop-price');
+    if (input.value) {
+      handlePriceMask(input);
+    }
+  }
+
+  // POSIÇÃO SOLAR (STRICT 2 OPTIONS)
+  function selectSunPosition(choice) {
+    document.getElementById('prop-sun').value = choice;
+    const btnSol = document.getElementById('sun-btn-sol');
+    const btnSombra = document.getElementById('sun-btn-sombra');
+
+    if (choice === 'Lado do Sol') {
+      btnSol.className = 'sun-choice-btn py-2 px-2.5 rounded-xl border border-neon bg-neon/15 text-neon text-xs font-bold flex items-center justify-center gap-1.5 transition';
+      btnSombra.className = 'sun-choice-btn py-2 px-2.5 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-400 text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-slate-500 transition';
+    } else {
+      btnSombra.className = 'sun-choice-btn py-2 px-2.5 rounded-xl border border-cyan-400 bg-cyan-400/15 text-cyan-300 text-xs font-bold flex items-center justify-center gap-1.5 transition';
+      btnSol.className = 'sun-choice-btn py-2 px-2.5 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-400 text-xs font-semibold flex items-center justify-center gap-1.5 hover:border-slate-500 transition';
+    }
+  }
+
+  // MULTIPLE PHOTOS MANAGEMENT
+  function handleMultiplePhotoUpload(input) {
+    if (input.files && input.files.length > 0) {
+      const files = Array.from(input.files);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          uploadedPhotos.push(e.target.result);
+          renderUploadedPhotosGrid();
+        };
+        reader.readAsDataURL(file);
+      });
+      input.value = '';
+    }
+  }
+
+  function addPhotoFromUrl() {
+    const urlInput = document.getElementById('prop-image-url');
+    const url = urlInput.value.trim();
+    if (url && (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:image'))) {
+      uploadedPhotos.push(url);
+      urlInput.value = '';
+      renderUploadedPhotosGrid();
+      showToast('Foto Adicionada', 'Imagem adicionada à galeria.', 'fa-image');
+    } else {
+      showToast('URL Inválida', 'Insira uma URL de imagem válida com http:// ou https://', 'fa-triangle-exclamation');
+    }
+  }
+
+  function removeUploadedPhoto(idx) {
+    uploadedPhotos.splice(idx, 1);
+    renderUploadedPhotosGrid();
+  }
+
+  function clearAllUploadedPhotos() {
+    uploadedPhotos = [];
+    renderUploadedPhotosGrid();
+  }
+
+  function renderUploadedPhotosGrid() {
+    const grid = document.getElementById('photo-preview-grid');
+    const countLabel = document.getElementById('photos-count-label');
+    const clearBtn = document.getElementById('clear-all-photos-btn');
+    
+    countLabel.textContent = uploadedPhotos.length;
+    grid.innerHTML = '';
+
+    if (uploadedPhotos.length === 0) {
+      grid.innerHTML = `
+        <div class="col-span-full py-6 text-center text-slate-600 text-xs flex flex-col items-center justify-center" id="empty-photos-notice">
+          <i class="fa-regular fa-images text-2xl mb-1 text-slate-700"></i>
+          <span>Nenhuma foto carregada ainda. Carregue pelo menos uma foto.</span>
+        </div>
+      `;
+      clearBtn.classList.add('hidden');
+      return;
+    }
+
+    clearBtn.classList.remove('hidden');
+
+    uploadedPhotos.forEach((src, idx) => {
+      const item = document.createElement('div');
+      item.className = 'relative group aspect-square rounded-xl overflow-hidden border border-slate-700 bg-black/60 shadow';
+      item.innerHTML = `
+        <img src="${src}" class="w-full h-full object-cover">
+        <span class="absolute top-1 left-1 bg-black/75 text-[10px] font-bold text-white px-1.5 py-0.5 rounded">#${idx + 1}</span>
+        <button type="button" onclick="removeUploadedPhoto(${idx})" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-red-600/90 text-white flex items-center justify-center text-xs opacity-90 group-hover:opacity-100 hover:bg-red-500 transition shadow">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      `;
+      grid.appendChild(item);
+    });
+  }
+
+  // Update Featured Section UI
+  function updateFeaturedUI() {
+    const featuredCard = document.getElementById('featured-content-card');
+    const emptyCard = document.getElementById('featured-empty-card');
+
+    if (!currentFeatured) {
+      featuredCard.classList.add('hidden');
+      emptyCard.classList.remove('hidden');
+      return;
+    }
+
+    emptyCard.classList.add('hidden');
+    featuredCard.classList.remove('hidden');
+
+    const mainImg = document.getElementById('featured-main-img');
+    const indicator = document.getElementById('carousel-indicator');
+    const thumbContainer = document.getElementById('thumb-container');
+    const cfg = typeConfig[currentFeatured.type] || typeConfig.aluguel;
+
+    if (featuredPhotoIndex >= currentFeatured.photos.length) featuredPhotoIndex = 0;
+    mainImg.src = currentFeatured.photos[featuredPhotoIndex];
+    indicator.textContent = `Foto ${featuredPhotoIndex + 1} de ${currentFeatured.photos.length} • ${currentFeatured.title}`;
+
+    thumbContainer.innerHTML = '';
+    currentFeatured.photos.forEach((photoUrl, idx) => {
+      const thumb = document.createElement('img');
+      thumb.src = photoUrl;
+      thumb.className = `w-14 h-10 object-cover rounded-lg cursor-pointer border-2 transition ${idx === featuredPhotoIndex ? 'border-neon scale-105' : 'border-slate-800 opacity-60 hover:opacity-100'}`;
+      thumb.onclick = () => {
+        featuredPhotoIndex = idx;
+        updateFeaturedUI();
+      };
+      thumbContainer.appendChild(thumb);
+    });
+
+    document.getElementById('featured-title').textContent = currentFeatured.title;
+    document.getElementById('featured-price-label').textContent = currentFeatured.priceLabel;
+    document.getElementById('featured-price').textContent = currentFeatured.price;
+    document.getElementById('featured-price').style.color = cfg.color;
+    document.getElementById('featured-meters').textContent = currentFeatured.meters;
+
+    document.getElementById('featured-owner-name').textContent = currentFeatured.ownerName;
+    document.getElementById('featured-owner-phone').textContent = currentFeatured.ownerPhone;
+    
+    const ownerPhotoEl = document.getElementById('featured-owner-photo');
+    if (currentFeatured.ownerPhoto) {
+      ownerPhotoEl.src = currentFeatured.ownerPhoto;
+      ownerPhotoEl.classList.remove('hidden');
+    } else {
+      ownerPhotoEl.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80';
+    }
+    
+    const typeTag = document.getElementById('featured-type-tag');
+    typeTag.textContent = currentFeatured.typeLabel;
+    typeTag.style.color = cfg.color;
+    typeTag.style.borderColor = cfg.color;
+    typeTag.style.backgroundColor = cfg.bg;
+
+    document.getElementById('feat-quartos').innerHTML = `<strong>${currentFeatured.rooms.quartos}</strong> Quartos`;
+    document.getElementById('feat-banheiros').innerHTML = `<strong>${currentFeatured.rooms.banheiros}</strong> Banheiros`;
+    document.getElementById('feat-cozinha').innerHTML = `<strong>${currentFeatured.rooms.cozinhas}</strong> Cozinha(s)`;
+    document.getElementById('feat-servico').textContent = currentFeatured.rooms.servico;
+    document.getElementById('feat-quintal').textContent = currentFeatured.rooms.quintal;
+    document.getElementById('feat-garagem').innerHTML = `<strong>${currentFeatured.rooms.garagem}</strong>`;
+    
+    // Solar position
+    document.getElementById('feat-sol').textContent = currentFeatured.rooms.sol;
+    const solIcon = document.getElementById('feat-sol-icon');
+    if (currentFeatured.rooms.sol === 'Lado da Sombra') {
+      solIcon.innerHTML = '<i class="fa-solid fa-cloud-sun text-cyan-300 w-4 text-center"></i>';
+    } else {
+      solIcon.innerHTML = '<i class="fa-solid fa-sun text-yellow-400 w-4 text-center"></i>';
+    }
+
+    // Address & Number & Reference
+    let fullAddr = `${currentFeatured.address}, Nº ${currentFeatured.houseNumber || 'S/N'}`;
+    document.getElementById('featured-address-badge').innerHTML = `<i class="fa-solid fa-location-dot mr-1" style="color:${cfg.color}"></i> ${fullAddr}`;
+
+    const refBadge = document.getElementById('featured-ref-badge');
+    if (currentFeatured.reference) {
+      refBadge.classList.remove('hidden');
+      refBadge.querySelector('span').textContent = currentFeatured.reference;
+    } else {
+      refBadge.classList.add('hidden');
+    }
+    
+    document.getElementById('featured-published-time').innerHTML = `<i class="fa-regular fa-clock mr-1"></i> Publicado ${currentFeatured.publishedAt}`;
+    document.getElementById('featured-code').textContent = `Cód: ${currentFeatured.code}`;
+
+    let cleanPhone = currentFeatured.ownerPhone.replace(/\D/g, '');
+    if (!cleanPhone.startsWith('55') && cleanPhone.length <= 11) {
+      cleanPhone = `55${cleanPhone}`;
+    }
+    const whatsMsg = encodeURIComponent(`Olá, vi o anúncio do imóvel no OpenWord: "${currentFeatured.title}" (${currentFeatured.price}). Ainda está disponível?`);
+    document.getElementById('featured-whatsapp-btn').href = `https://wa.me/${cleanPhone}?text=${whatsMsg}`;
+  }
+
+  function prevFeaturedImg() {
+    if (!currentFeatured || !currentFeatured.photos.length) return;
+    featuredPhotoIndex = (featuredPhotoIndex - 1 + currentFeatured.photos.length) % currentFeatured.photos.length;
+    updateFeaturedUI();
+  }
+
+  function nextFeaturedImg() {
+    if (!currentFeatured || !currentFeatured.photos.length) return;
+    featuredPhotoIndex = (featuredPhotoIndex + 1) % currentFeatured.photos.length;
+    updateFeaturedUI();
+  }
+
+  function openLightboxFromFeatured() {
+    if (!currentFeatured || !currentFeatured.photos.length) return;
+    openLightbox(currentFeatured.photos[featuredPhotoIndex], currentFeatured.title);
+  }
+
+  function openLightbox(imgSrc, title) {
+    const modal = document.getElementById('lightbox-modal');
+    const img = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    img.src = imgSrc;
+    caption.textContent = title || 'Visualização em Alta Definição';
+    modal.classList.remove('hidden');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox-modal').classList.add('hidden');
+  }
+
+  // Render Horizontal Slider
+  function renderPropertiesVitrine() {
+    const slider = document.getElementById('properties-slider');
+    slider.innerHTML = '';
+
+    const filtered = activeFilter === 'todos' 
+      ? propertyList 
+      : propertyList.filter(p => p.type === activeFilter);
+
+    document.getElementById('count-todos').textContent = propertyList.length;
+    document.getElementById('slider-count-info').textContent = `Exibindo ${filtered.length} de ${propertyList.length} imóveis`;
+
+    if (filtered.length === 0) {
+      slider.innerHTML = `
+        <div class="w-full py-12 sm:py-16 px-4 text-center rounded-2xl bg-cardnavy/40 border border-slate-800/80 my-2">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-800 flex items-center justify-center mx-auto mb-3 text-slate-500 text-xl sm:text-2xl">
+            <i class="fa-regular fa-folder-open"></i>
+          </div>
+          <h4 class="text-base font-bold text-white mb-1">Nenhum imóvel anunciado ainda</h4>
+          <p class="text-xs text-slate-400 max-w-sm mx-auto mb-4">Clique em Anunciar Imóvel para cadastrar sua primeira publicação no feed com múltiplas fotos!</p>
+          <button onclick="handleAnnounceClick()" class="px-5 py-2.5 min-h-[42px] rounded-xl bg-neon text-darknavy font-bold text-xs hover:bg-neon-hover shadow-neon transition inline-flex items-center gap-1.5">
+            <i class="fa-solid fa-plus"></i> Anunciar Imóvel
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    filtered.forEach((prop) => {
+      const cfg = typeConfig[prop.type] || typeConfig.aluguel;
+      let cleanPhone = prop.ownerPhone.replace(/\D/g, '');
+      if (!cleanPhone.startsWith('55') && cleanPhone.length <= 11) {
+        cleanPhone = `55${cleanPhone}`;
+      }
+      const whatsMsg = encodeURIComponent(`Olá, vi o anúncio do imóvel no OpenWord: "${prop.title}" (${prop.price}). Ele ainda está disponível?`);
+      const fullDisplayAddr = `${prop.address}, Nº ${prop.houseNumber || 'S/N'}`;
+      
+      const card = document.createElement('div');
+      card.className = 'w-[280px] xs:w-[320px] sm:w-[360px] flex-shrink-0 bg-cardnavy/95 border border-cyan-900/50 hover:border-neon/70 rounded-2xl p-3.5 sm:p-4 shadow-xl transition-all duration-300 flex flex-col justify-between group';
+      
+      card.innerHTML = `
+        <div class="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden bg-black/50 border border-slate-800">
+          <img src="${prop.photos[0]}" alt="${prop.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="openLightbox('${prop.photos[0]}', '${prop.title}')">
+          <span class="absolute top-2.5 left-2.5 text-[10px] sm:text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-md" style="background:${cfg.bg}; color:${cfg.color}; border: 1px solid ${cfg.border}; backdrop-filter: blur(4px);">
+            ${prop.typeLabel}
+          </span>
+          <button class="absolute top-2.5 right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-darknavy/80 hover:bg-neon hover:text-darknavy text-white flex items-center justify-center transition" onclick="openLightbox('${prop.photos[0]}', '${prop.title}')" title="Ampliar Foto">
+            <i class="fa-solid fa-magnifying-glass-plus text-[10px] sm:text-xs"></i>
+          </button>
+          <span class="absolute bottom-2 right-2 text-[10px] bg-black/75 px-2 py-0.5 rounded text-slate-300">
+            <i class="fa-solid fa-camera mr-1"></i> ${prop.photos.length} fotos
+          </span>
+        </div>
+
+        <div class="pt-3 flex-grow flex flex-col justify-between">
+          <div>
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 class="font-extrabold text-white text-sm sm:text-base truncate" title="${prop.title}">${prop.title}</h3>
+            </div>
+            <p class="text-xs text-slate-300 truncate mt-0.5" title="${fullDisplayAddr}"><i class="fa-solid fa-location-dot text-neon mr-1"></i> ${fullDisplayAddr}</p>
+            ${prop.reference ? `<p class="text-[11px] text-cyan-300/80 truncate mt-0.5"><i class="fa-solid fa-compass mr-1"></i> ${prop.reference}</p>` : ''}
+
+            <div class="mt-2.5 flex items-baseline justify-between border-b border-slate-800/80 pb-2">
+              <div>
+                <span class="text-[10px] uppercase text-slate-500 block">${prop.priceLabel}</span>
+                <span class="text-lg sm:text-xl font-black" style="color: ${cfg.color}">${prop.price}</span>
+              </div>
+              <span class="text-xs font-semibold text-slate-300">${prop.meters}</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-1.5 py-2.5 text-[11px] text-slate-300 border-b border-slate-800/60">
+              <span class="flex items-center gap-1"><i class="fa-solid fa-bed text-neon text-[10px]"></i> ${prop.rooms.quartos} qtos</span>
+              <span class="flex items-center gap-1"><i class="fa-solid fa-bath text-neon text-[10px]"></i> ${prop.rooms.banheiros} bws</span>
+              <span class="flex items-center gap-1"><i class="fa-solid fa-car text-neon text-[10px]"></i> ${prop.rooms.garagem.split(' ')[0]} vaga(s)</span>
+            </div>
+            
+            <div class="py-1.5 text-[11px] text-slate-400 flex items-center justify-between">
+              <span class="truncate">
+                ${prop.rooms.sol === 'Lado da Sombra' ? '<i class="fa-solid fa-cloud-sun text-cyan-300 mr-1"></i>' : '<i class="fa-solid fa-sun text-yellow-400 mr-1"></i>'}
+                ${prop.rooms.sol}
+              </span>
+            </div>
+          </div>
+
+          <div class="pt-2 mt-2 border-t border-slate-800/70">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <img src="${prop.ownerPhoto || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80'}" alt="${prop.ownerName}" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-neon flex-shrink-0">
+                <div class="truncate">
+                  <div class="text-xs font-bold text-white truncate">${prop.ownerName}</div>
+                  <div class="text-[10px] text-slate-400 font-mono">${prop.ownerPhone}</div>
+                </div>
+              </div>
+
+              <a href="https://wa.me/${cleanPhone}?text=${whatsMsg}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black text-xs font-bold transition flex items-center gap-1 flex-shrink-0 shadow">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span class="hidden xs:inline">WhatsApp</span>
+              </a>
+            </div>
+
+            <div class="mt-2.5 flex items-center gap-2">
+              <button onclick="setAsFeatured('${prop.id}')" class="w-full py-1.5 rounded-lg bg-slate-800 hover:bg-neon hover:text-darknavy text-slate-200 text-xs font-bold transition border border-slate-700 hover:border-neon flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-star text-yellow-400"></i> Ver no Destaque
+              </button>
+            </div>
+
+            <div class="mt-2 text-[10px] text-slate-500 flex items-center justify-between">
+              <span>Publicado ${prop.publishedAt}</span>
+              <span>${prop.code}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      slider.appendChild(card);
+    });
+  }
+
+  function scrollCarousel(direction) {
+    const slider = document.getElementById('properties-slider');
+    const scrollAmount = 340;
+    slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+
+  function filterProperties(category) {
+    activeFilter = category;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('bg-neon', 'text-darknavy', 'shadow-neon');
+      btn.classList.add('bg-transparent');
+    });
+
+    const activeBtn = document.getElementById(`filter-btn-${category}`);
+    if (activeBtn) {
+      activeBtn.classList.remove('bg-transparent');
+      activeBtn.classList.add('bg-neon', 'text-darknavy', 'shadow-neon');
+    }
+
+    renderPropertiesVitrine();
+  }
+
+  function setAsFeatured(propId) {
+    const found = propertyList.find(p => p.id === propId);
+    if (found) {
+      currentFeatured = found;
+      featuredPhotoIndex = 0;
+      updateFeaturedUI();
+      document.getElementById('destaque').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Modal Multi-step Logic
+  let currentStep = 1;
 
   function openModal() {
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.classList.add('opacity-100', 'pointer-events-auto');
-    modalContent.classList.remove('scale-95');
-    modalContent.classList.add('scale-100');
-    document.body.style.overflow = 'hidden';
+    if (!currentUser.isLoggedIn) {
+      handleAnnounceClick();
+      return;
+    }
+    const avatarEl = document.getElementById('form-user-preview-avatar');
+    if (currentUser.avatar) {
+      avatarEl.src = currentUser.avatar;
+    } else {
+      avatarEl.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80';
+    }
+    document.getElementById('form-user-preview-name').textContent = `Logado como ${currentUser.name}`;
+    document.getElementById('form-user-preview-phone').textContent = `WhatsApp: ${currentUser.phone}`;
+
+    document.getElementById('announce-modal').classList.remove('hidden');
+    goToStep(1);
   }
 
   function closeModal() {
-    modal.classList.remove('opacity-100', 'pointer-events-auto');
-    modal.classList.add('opacity-0', 'pointer-events-none');
-    modalContent.classList.remove('scale-100');
-    modalContent.classList.add('scale-95');
-    document.body.style.overflow = '';
+    document.getElementById('announce-modal').classList.add('hidden');
   }
 
-  openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  function updatePriceLabelByType() {
+    const type = document.getElementById('prop-type').value;
+    const label = document.getElementById('form-price-label');
+    if (type === 'aluguel') label.innerHTML = 'Valor Mensal <span class="text-neon">*</span>';
+    else if (type === 'lazer') label.innerHTML = 'Valor Diária <span class="text-neon">*</span>';
+    else label.innerHTML = 'Valor de Venda <span class="text-neon">*</span>';
+  }
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
+  function goToStep(step) {
+    if (step === 2 && currentStep === 1) {
+      const title = document.getElementById('prop-title').value.trim();
+      const address = document.getElementById('prop-address').value.trim();
+      const houseNumber = document.getElementById('prop-number').value.trim();
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
-      closeModal();
-    }
-  });
-
-  // SELEÇÃO DE CHIPS DE SERVIÇO
-  const serviceChips = document.querySelectorAll('.service-chip');
-  const selectedServiceInput = document.getElementById('selected-service-value');
-
-  serviceChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      serviceChips.forEach(c => {
-        c.classList.remove('border-[#D4AF37]', 'bg-[#D4AF37]/20', 'text-white', 'font-bold');
-        c.classList.add('border-white/10', 'bg-surface-container-high', 'text-on-surface-variant');
-      });
-      chip.classList.remove('border-white/10', 'bg-surface-container-high', 'text-on-surface-variant');
-      chip.classList.add('border-[#D4AF37]', 'bg-[#D4AF37]/20', 'text-white', 'font-bold');
-      
-      const serv = chip.getAttribute('data-service') || 'Serviço Geral';
-      selectedServiceInput.value = serv;
-    });
-  });
-
-  // SUBMIT DO AGENDAMENTO PARA O WHATSAPP 5584996093270
-  const submitAgendamentoBtn = document.getElementById('btn-submit-agendamento');
-  const errorMsg = document.getElementById('agenda-error-msg');
-
-  if (submitAgendamentoBtn) {
-    submitAgendamentoBtn.addEventListener('click', () => {
-      const nome = document.getElementById('agenda-nome').value.trim();
-      const whatsapp = document.getElementById('agenda-whatsapp').value.trim();
-      const modelo = document.getElementById('agenda-modelo').value.trim();
-      const servico = selectedServiceInput.value || 'Geral';
-      const relato = document.getElementById('agenda-defeito').value.trim() || 'Avaliação direta na bancada';
-      const dataVal = document.getElementById('agenda-data').value;
-      const turno = document.getElementById('agenda-turno').value;
-
-      if (!nome || !modelo) {
-        errorMsg.classList.remove('hidden');
+      if (!title || !address || !houseNumber) {
+        showToast('Campos Obrigatórios', 'Preencha o título, endereço e número da casa.', 'fa-triangle-exclamation');
         return;
       }
-      errorMsg.classList.add('hidden');
+    }
 
-      let dataFormatada = dataVal;
-      if (dataVal) {
-        const parts = dataVal.split('-');
-        if (parts.length === 3) {
-          dataFormatada = `${parts[2]}/${parts[1]}/${parts[0]}`;
-        }
-      } else {
-        dataFormatada = 'A combinar';
+    if (step === 3 && currentStep === 2) {
+      const price = document.getElementById('prop-price').value.trim();
+      const meters = document.getElementById('prop-meters').value.trim();
+      const rooms = document.getElementById('prop-rooms').value.trim();
+      const baths = document.getElementById('prop-baths').value.trim();
+      const kitchens = document.getElementById('prop-kitchens').value.trim();
+
+      if (!price || !meters || !rooms || !baths || !kitchens) {
+        showToast('Campos Obrigatórios', 'Informe o valor, metragem e quantidade de cômodos.', 'fa-triangle-exclamation');
+        return;
       }
+    }
 
-      const textMsg = `Olá, quero agendar um serviço na LR TECH FIX!\n\n👤 *Cliente:* ${nome}\n📞 *WhatsApp:* ${whatsapp}\n📱 *Aparelho:* ${modelo}\n🛠️ *Serviço:* ${servico}\n📝 *Defeito / Relato:* ${relato}\n📅 *Data:* ${dataFormatada}\n⏰ *Horário:* ${turno}\n\nEstou aguardando a confirmação da bancada.`;
+    currentStep = step;
+    document.getElementById('form-step-1').classList.toggle('hidden', step !== 1);
+    document.getElementById('form-step-2').classList.toggle('hidden', step !== 2);
+    document.getElementById('form-step-3').classList.toggle('hidden', step !== 3);
 
-      const encoded = encodeURIComponent(textMsg);
-      const waUrl = `https://wa.me/5584996093270?text=${encoded}`;
-      
-      closeModal();
-      window.open(waUrl, '_blank');
-    });
+    const progress = (step / 3) * 100;
+    document.getElementById('step-progress-bar').style.width = `${progress}%`;
+    document.getElementById('step-badge').textContent = `Etapa ${step} de 3`;
   }
+
+  // Free ViaCEP lookup
+  async function fetchAddressByCEP() {
+    const cepInput = document.getElementById('prop-cep');
+    const addressInput = document.getElementById('prop-address');
+    const loader = document.getElementById('cep-loader');
+    
+    const cleanCep = cepInput.value.replace(/\D/g, '');
+    if (cleanCep.length === 8) {
+      loader.classList.remove('hidden');
+      try {
+        const res = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+        const data = await res.json();
+        if (!data.erro) {
+          addressInput.value = `${data.logradouro}, ${data.bairro} - ${data.localidade}/${data.uf}`;
+          showToast('Endereço Localizado', `${data.logradouro} - ${data.localidade}`, 'fa-location-dot');
+          document.getElementById('prop-number').focus();
+        } else {
+          showToast('CEP não encontrado', 'Digite o endereço e número manualmente.', 'fa-circle-exclamation');
+        }
+      } catch (err) {
+        console.error('Erro na consulta ViaCEP:', err);
+      } finally {
+        loader.classList.add('hidden');
+      }
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    if (!currentUser.isLoggedIn) {
+      closeModal();
+      openAuthModal(true);
+      return;
+    }
+
+    if (uploadedPhotos.length === 0) {
+      showToast('Fotos Necessárias', 'Adicione pelo menos 1 foto do imóvel para publicar.', 'fa-image');
+      return;
+    }
+
+    const title = document.getElementById('prop-title').value.trim();
+    const address = document.getElementById('prop-address').value.trim();
+    const houseNumber = document.getElementById('prop-number').value.trim();
+    const reference = document.getElementById('prop-reference').value.trim();
+
+    const type = document.getElementById('prop-type').value;
+    const currencySelect = document.getElementById('prop-currency');
+    const currencyOption = currencySelect.options[currencySelect.selectedIndex];
+    const currencySymbol = currencyOption.getAttribute('data-symbol') || 'R$';
+    const priceVal = document.getElementById('prop-price').value.trim();
+
+    const metersVal = document.getElementById('prop-meters').value.trim();
+    const roomsVal = document.getElementById('prop-rooms').value.trim();
+    const bathsVal = document.getElementById('prop-baths').value.trim();
+    const kitchensVal = document.getElementById('prop-kitchens').value.trim();
+    const garageVal = document.getElementById('prop-garage').value.trim() || '0';
+    const sunVal = document.getElementById('prop-sun').value || 'Lado do Sol';
+    const yardVal = document.getElementById('prop-yard').value;
+
+    const formattedPrice = `${currencySymbol} ${priceVal}`;
+    
+    let priceLabel = 'Valor Mensal';
+    let typeLabel = 'Aluguel';
+    if (type === 'venda') {
+      priceLabel = 'Valor de Venda';
+      typeLabel = 'Venda';
+    } else if (type === 'lazer') {
+      priceLabel = 'Valor Diária';
+      typeLabel = 'Área de Lazer';
+    }
+
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const mins = String(now.getMinutes()).padStart(2, '0');
+    const publishedTime = `Hoje às ${hours}:${mins}`;
+
+    const newProperty = {
+      id: `prop-${Date.now()}`,
+      title: title,
+      type: type,
+      typeLabel: typeLabel,
+      priceLabel: priceLabel,
+      price: formattedPrice,
+      meters: `${metersVal} m²`,
+      address: address,
+      houseNumber: houseNumber,
+      reference: reference,
+      ownerName: currentUser.name,
+      ownerPhone: currentUser.phone,
+      ownerPhoto: currentUser.avatar,
+      publishedAt: publishedTime,
+      code: `#OPW-${Math.floor(1000 + Math.random() * 9000)}`,
+      rooms: {
+        quartos: roomsVal,
+        banheiros: bathsVal,
+        cozinhas: kitchensVal,
+        garagem: `${garageVal} Vaga(s)`,
+        servico: 'Área de Serviço',
+        quintal: yardVal,
+        sol: sunVal
+      },
+      photos: [...uploadedPhotos]
+    };
+
+    propertyList.unshift(newProperty);
+    currentFeatured = newProperty;
+    featuredPhotoIndex = 0;
+    
+    updateFeaturedUI();
+    renderPropertiesVitrine();
+
+    // Reset Form & Temporary Uploads
+    document.getElementById('property-form').reset();
+    uploadedPhotos = [];
+    renderUploadedPhotosGrid();
+    selectSunPosition('Lado do Sol');
+    
+    closeModal();
+    showToast('Publicado com Sucesso!', 'Seu imóvel foi adicionado com suas fotos e está em destaque.', 'fa-circle-check');
+    document.getElementById('destaque').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Init page: Starts cleanly logged out and with empty vitrine
+  window.addEventListener('DOMContentLoaded', () => {
+    updateAuthUI();
+    updateFeaturedUI();
+    renderPropertiesVitrine();
+  });
 </script>
+<!-- END: Scripts -->
 </body></html>
